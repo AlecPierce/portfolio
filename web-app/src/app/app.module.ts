@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { MainMenuComponent } from './menus/main-menu';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MainMenuComponent
   ],
   imports: [
-    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
