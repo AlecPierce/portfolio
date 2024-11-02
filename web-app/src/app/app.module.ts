@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MainMenuComponent } from './menus/main-menu';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MainMenuComponent
   ],
-  imports: [
-  ],
+  imports: [AppComponent],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

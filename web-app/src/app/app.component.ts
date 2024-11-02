@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { MainMenuComponent } from './menus/main-menu';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [MainMenuComponent],
+  template: `<app-main-menu></app-main-menu>`
 })
 export class AppComponent {
   title = 'web-app';
