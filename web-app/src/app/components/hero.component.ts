@@ -2,17 +2,18 @@ import { Component, Input, input } from '@angular/core';
 
 @Component({
     selector: 'hero',
-    template: `            <div class="bg-gray-700 p-4 mx-40 my-10 rounded-lg shadow-lg">
-    <div class="rounded-lg p-10 bg-gray-500">
-    <h2 class="text-2xl font-italic mb-4">{{name}}</h2>
-    <p>{{description}}</p>
-    <p>{{class}}</p>
-    <p>Level: {{level}}</p>
-    <p>EXP: {{exp}}</p>
-    <p>HP: {{hp}}</p>
-    <p>MP: {{mp}}</p>
-    </div>
-</div>`,
+    template: `
+    <div class="bg-gray-700 p-4 rounded-lg shadow-lg w-64 h-auto">
+        <div class="rounded-lg p-10 bg-blue-600">
+            <h2 class="text-2xl font-italic mb-4">{{name}}</h2>
+            <p class="h-20">{{description}}</p>
+            <p>{{class}}</p>
+            <p>Level: {{level}}</p>
+            <p>EXP: {{exp}}</p>
+            <p>HP: {{hp}}</p>
+            <p>MP: {{mp}}</p>
+        </div>
+    </div>`,
 standalone: true,
     styleUrls: []
 })
