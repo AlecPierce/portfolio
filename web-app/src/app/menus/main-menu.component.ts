@@ -4,7 +4,6 @@ import { HeroComponent } from '../components/hero.component';
 
 @Component({
     selector: 'app-main-menu',
-    standalone: true,
     template: `
     <div class="flexbox text-white">
         <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
