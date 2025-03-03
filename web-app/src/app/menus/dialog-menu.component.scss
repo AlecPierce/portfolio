@@ -1,0 +1,49 @@
+.dialog {
+    display: grid;
+    padding: 1rem;
+    background-color: darkcyan;
+}
+
+.dialog-header {
+    display: grid;
+    padding: 1rem;
+    justify-content: right;
+}
+
+.dialog-content {
+    display: grid;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.dialog-footer {
+    display: grid;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.action-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.close-button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    justify-content: right;
+}

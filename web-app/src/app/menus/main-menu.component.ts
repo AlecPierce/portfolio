@@ -1,6 +1,9 @@
 import { Component, input } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { HeroComponent } from '../components/hero.component';
+import { DialogMenuComponent } from './dialog-menu.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Stats } from '../classes/stats';
 
 @Component({
     selector: 'app-main-menu',
@@ -8,8 +11,8 @@ import { HeroComponent } from '../components/hero.component';
     <div class="flexbox text-white">
         <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
         <div class="hero-container">
-            <hero name="Makoto" class="Hero" [level]="1" [exp]="0" [hp]="10" [mp]="5"></hero>
-            <hero name="Yukari Takeba" class="Healer" description="Lovers Arcana from Persona 3" [level]="1" [exp]="0" [hp]="5" [mp]="10"></hero>
+            <hero [hero]="makoto" description="The main character from Persona 3" (click)="openHeroDialog(makoto)"></hero>
+            <hero [hero]="yukari" description="One of the heroines from Persona 3" (click)="openHeroDialog(yukari)"></hero>
         </div>
     </div>
     `,
@@ -17,5 +20,25 @@ import { HeroComponent } from '../components/hero.component';
     imports: [HeroComponent]
 })
 export class MainMenuComponent {
+    makoto: Hero = new Hero(1, 'Makoto', 'Hero', 0);
+    yukari: Hero = new Hero(2, 'Yukari', 'Mage', 0);
+
+    heroes: Hero[] = [this.makoto, this.yukari];
+        // Add more heroes as needed
+    
+      constructor(private dialog: MatDialog) {}
+    
+      openHeroDialog(hero: Hero): void {
+        const dialogRef = this.dialog.open(DialogMenuComponent, {
+          width: '250px',
+          data: hero
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            console.log('Hero action:', result);
+          }
+        });
+      }
     title = 'Main Menu';
 }

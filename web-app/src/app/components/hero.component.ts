@@ -1,44 +1,32 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Hero } from '../classes/hero';
+import { StatsComponent } from './stats.component';
 
 @Component({
     selector: 'hero',
     template: `
     <div class="bg-gray-700 p-4 rounded-lg shadow-lg w-64 h-auto">
         <div class="rounded-lg p-10 bg-blue-600">
-            <h2 class="text-2xl font-italic mb-4">{{name}}</h2>
-            <p class="h-20">{{description}}</p>
-            <p>{{class}}</p>
-            <p>Level: {{level}}</p>
-            <p>EXP: {{exp}}</p>
-            <p>HP: {{hp}}</p>
-            <p>MP: {{mp}}</p>
+            <h2 class="text-2xl font-italic mb-4">{{hero.heroName}}</h2>
+            <p class="mb-2">{{description}}</p>
+            <p>Class: {{hero.jobClass}}</p>
+            <p>Status: {{hero.isInParty ? 'In Party' : 'Not in Party'}}</p>
+            <stats [stats]="hero.stats" [isFullStats]="false"></stats>
         </div>
     </div>`,
-standalone: true,
-    styleUrls: []
+    standalone: true,
+    styleUrls: [],
+    imports: [StatsComponent]
 })
 export class HeroComponent {
 
     @Input({ required: true })
-    name!: string;
+    hero!: Hero;
 
     @Input({ required: false })
     description?: string;
 
-    @Input({ required: true })
-    class!: string;
-
-    @Input({ required: true })
-    level!: number;
-
-    @Input({ required: true })
-    exp!: number;
-
-    @Input({ required: true })
-    hp!: number;
-
-    @Input({ required: true })
-    mp!: number;
+    // stats: Stats = this.hero.stats;
 
     title = 'Hero Component';
 }

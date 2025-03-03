@@ -20,9 +20,9 @@ export class Stats {
         };
     }
 
-    setStats(primary: PrimaryStats, secondary: SecondaryStats) {
-        this.primary = primary;
-        this.secondary = secondary;
+    setStats(stats: Stats) {
+        this.primary = stats.primary;
+        this.secondary = stats.secondary;
     }
 
     getPrimaryStats() {
@@ -67,12 +67,12 @@ export class Stats {
 }
 
 class PrimaryStats {
-    hp: number;
-    mp: number;
-    atk: number;
-    def: number;
-    spatk: number;
-    spdef: number;
+    private hp: number;
+    private mp: number;
+    private atk: number;
+    private def: number;
+    private spatk: number;
+    private spdef: number;
 
     constructor() {
         this.hp = 1;
@@ -94,7 +94,7 @@ class PrimaryStats {
         };
     }
 
-    setStats(hp: number, mp: number, atk: number, def: number, spatk: number, spdef: number) {
+    setStats(hp: number, mp: number, atk: number, def: number, spatk: number, spdef: number): void {
         this.hp = hp;
         this.mp = mp;
         this.atk = atk;
@@ -153,13 +153,13 @@ class PrimaryStats {
 }
 
 class SecondaryStats {
-    mag: number;
-    dex: number;
-    luk: number;
-    spd: number;
-    hit: number;
-    eva: number;
-    res: number;
+    private mag: number;
+    private dex: number;
+    private luk: number;
+    private spd: number;
+    private hit: number;
+    private eva: number;
+    private res: number;
 
     constructor() {
         this.mag = 1;
@@ -183,7 +183,7 @@ class SecondaryStats {
         };
     }
 
-    setStats(mag: number, dex: number, luk: number, spd: number, hit: number, eva: number, res: number) {
+    setStats(mag: number, dex: number, luk: number, spd: number, hit: number, eva: number, res: number): void {
         this.mag = mag;
         this.dex = dex;
         this.luk = luk;

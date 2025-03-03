@@ -1,13 +1,30 @@
 <div class="dialog">
   <div class="dialog-header">
-    <h2>Dialog Title</h2>
     <button class="close-button" (click)="closeDialog()">X</button>
   </div>
-  <div class="dialog-body">
-    <p>Dialog content goes here...</p>
+  <div class="dialog-content text-white">
+    <p>{{ hero.heroName }}</p>
+    <p>Class: {{ hero.jobClass }}</p>
+    <p>
+      Stats:
+      <stats [stats]="hero.stats" [isFullStats]="true"></stats>
+    </p>
+    <p>EXP: {{ hero.totalExp }}</p>
   </div>
   <div class="dialog-footer">
-    <button class="action-button" (click)="confirmAction()">Confirm</button>
-    <button class="cancel-button" (click)="cancelAction()">Cancel</button>
+    <button
+      class="action-button"
+      (click)="onAction('add')"
+      *ngIf="!alreadyInParty"
+    >
+      Add to Party
+    </button>
+    <button
+      class="action-button"
+      (click)="onAction('remove')"
+      *ngIf="alreadyInParty"
+    >
+      Remove from Party
+    </button>
   </div>
 </div>
