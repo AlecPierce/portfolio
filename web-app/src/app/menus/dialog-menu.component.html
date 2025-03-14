@@ -11,6 +11,22 @@
     </p>
     <p>EXP: {{ hero.totalExp }}</p>
   </div>
+  <div class="image-container" *ngIf="alreadyInParty">
+    <img
+      src="
+    https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/PlayStation_button_X.svg/2048px-PlayStation_button_X.svg.png
+    "
+      alt="X"
+      class="image"
+      (click)="animate()"
+    />
+  </div>
+  <!-- <div class="dialog-content text-white">
+    <p>Skills:</p>
+    <ul>
+      <li *ngFor="let skill of hero.skills">{{ skill }}</li>
+    </ul>
+  </div> -->
   <div class="dialog-footer">
     <button
       class="action-button"
