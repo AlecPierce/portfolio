@@ -5,29 +5,30 @@
   <div class="dialog-content text-white">
     <p>{{ hero.heroName }}</p>
     <p>Class: {{ hero.jobClass }}</p>
-    <p>
-      Stats:
-      <stats [stats]="hero.stats" [isFullStats]="true"></stats>
-    </p>
     <p>EXP: {{ hero.totalExp }}</p>
+
+    <span>
+      Stats
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{
+              panelOpenState() ? "Full stats" : "View"
+            }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <stats [stats]="hero.stats" [isFullStats]="true"></stats>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
   </div>
-  <div class="image-container" *ngIf="alreadyInParty">
-    <img
-      src="
-    https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/PlayStation_button_X.svg/2048px-PlayStation_button_X.svg.png
-    "
-      alt="X"
-      class="image"
-      (click)="animate()"
-    />
-  </div>
-  <!-- <div class="dialog-content text-white">
-    <p>Skills:</p>
-    <ul>
-      <li *ngFor="let skill of hero.skills">{{ skill }}</li>
-    </ul>
-  </div> -->
   <div class="dialog-footer">
+    <div *ngIf="alreadyInParty" class="battle" (click)="onAction('battle')">
+      Battle
+    </div>
+
     <button
       class="action-button"
       (click)="onAction('add')"

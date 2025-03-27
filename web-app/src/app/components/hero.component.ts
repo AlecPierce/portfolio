@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { StatsComponent } from './stats.component';
 
@@ -25,6 +25,12 @@ export class HeroComponent {
 
     @Input({ required: false })
     description?: string;
+
+    @Output() showBattle = new EventEmitter<string>();
+
+    showBattleEvent() {
+        this.showBattle.emit(this.hero.heroName);
+    }
 
     // stats: Stats = this.hero.stats;
 

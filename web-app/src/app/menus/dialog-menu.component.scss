@@ -51,10 +51,35 @@
 .image-container {
     width: 25%;
     height: 25%;
-    display: inline-block;
-    justify-content: center;
+    padding-left: 10%;
+    align-items: right;
 }
 
 .image {
     cursor: pointer;
+}
+
+.battle
+{
+    display: grid;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    animation: battle-animation 3s infinite;
+    color: white;
+}
+
+@keyframes battle-animation {
+    0% {
+        opacity: 0.5;
+        transform: rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(5deg);
+    }
+    100% {
+        background-color: #8569d14d;
+        transform: rotate(0deg);
+    }
+    
 }
