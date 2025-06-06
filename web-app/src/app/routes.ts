@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 
 const routeConfig: Routes = [
     {
-      path: '',
+      path: 'hero-menu',
       component: MainMenuComponent,
       title: 'Hero Menu',
     }

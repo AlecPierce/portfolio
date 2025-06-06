@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MainMenuComponent } from './menus/main-menu.component';
 import {RouterModule} from '@angular/router';
 
 @Component({
@@ -8,11 +7,14 @@ import {RouterModule} from '@angular/router';
     imports: [RouterModule],
     template: `
       <main>
-        <a [routerLink]="['/']">
+        <a [routerLink]="['/hero-menu']">
           <header class="brand-name">
             <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
           </header>
-        </a>
+          <button class="nav-button">
+            Hero Menu
+          </button>
+      </a>
         <section class="content">
           <router-outlet></router-outlet>
         </section>
@@ -22,5 +24,3 @@ import {RouterModule} from '@angular/router';
 export class AppComponent {
   title = 'web-app';
 }
-
-//    template: `<app-main-menu></app-main-menu>`

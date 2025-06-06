@@ -11,6 +11,8 @@ import { CommonModule } from '@angular/common';
     template: `
     <div class="flexbox text-white">
         <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
+        <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
+
         <div class="hero-container">
             <hero [hero]="makoto" description="The main character from Persona 3" (click)="openHeroDialog(makoto)"
               (showBattle)="addHeroToBattle($event)"></hero>
