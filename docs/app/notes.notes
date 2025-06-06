@@ -1,0 +1,13 @@
+party exp observable group?
+
+popup menu (dialog) of options
+click a hero > menu of options
+    - dungeon
+    - battle
+        - no real battles yet so just give random exp
+    - item
+    - save
+        - output hero to update parent hero class
+    - exit
+
+will send u to a route for option clicked 

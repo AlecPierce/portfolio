@@ -1,0 +1,47 @@
+<div class="dialog">
+  <div class="dialog-header">
+    <button class="close-button" (click)="closeDialog()">X</button>
+  </div>
+  <div class="dialog-content text-white">
+    <p>{{ hero.heroName }}</p>
+    <p>Class: {{ hero.jobClass }}</p>
+    <p>EXP: {{ hero.totalExp }}</p>
+
+    <span>
+      Stats
+      <mat-accordion>
+        <mat-expansion-panel
+          (opened)="panelOpenState.set(true)"
+          (closed)="panelOpenState.set(false)"
+        >
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{
+              panelOpenState() ? "Full stats" : "View"
+            }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <stats [stats]="hero.stats" [isFullStats]="true"></stats>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </span>
+  </div>
+  <div class="dialog-footer">
+    <div *ngIf="alreadyInParty" class="battle" (click)="onAction('battle')">
+      Battle
+    </div>
+
+    <button
+      class="action-button"
+      (click)="onAction('add')"
+      *ngIf="!alreadyInParty"
+    >
+      Add to Party
+    </button>
+    <button
+      class="action-button"
+      (click)="onAction('remove')"
+      *ngIf="alreadyInParty"
+    >
+      Remove from Party
+    </button>
+  </div>
+</div>

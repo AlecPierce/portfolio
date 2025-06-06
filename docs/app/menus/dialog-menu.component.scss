@@ -1,0 +1,85 @@
+.dialog {
+    display: grid;
+    padding: 1rem;
+    background-color: darkcyan;
+}
+
+.dialog-header {
+    display: grid;
+    padding: 1rem;
+    justify-content: right;
+}
+
+.dialog-content {
+    display: grid;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.dialog-footer {
+    display: grid;
+    padding: 1rem;
+    justify-content: center;
+}
+
+.action-button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.close-button {
+    background-color: #f44336; /* Red */
+    border: none;
+    color: white;
+    padding: 5px 22px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    justify-content: right;
+}
+
+.image-container {
+    width: 25%;
+    height: 25%;
+    padding-left: 10%;
+    align-items: right;
+}
+
+.image {
+    cursor: pointer;
+}
+
+.battle
+{
+    display: grid;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    animation: battle-animation 3s infinite;
+    color: white;
+}
+
+@keyframes battle-animation {
+    0% {
+        opacity: 0.5;
+        transform: rotate(0deg);
+    }
+    50% {
+        opacity: 1;
+        transform: rotate(5deg);
+    }
+    100% {
+        background-color: #8569d14d;
+        transform: rotate(0deg);
+    }
+    
+}
