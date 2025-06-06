@@ -106,6 +106,14 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://alecpierce.github.io/hero-system",
+            "remote": "origin",
+            "repo": "https://github.com/alecpierce/hero-system.git"
+          }
         }
       }
     }
