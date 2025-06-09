@@ -2,7 +2,7 @@
   command = "npm start"
   port = 8888
   targetPort = 3000
-  publish = "dist"
+  publish = "dist/browser"
   jwtRolePath = "app_metadata.authorization.roles"
   jwtSecret = "MY_JWT_SECRET_VALUE"
   autoLaunch = true
