@@ -15,9 +15,6 @@ import { CommonModule } from '@angular/common';
                 </audio>
             </mat-card-content>
             <mat-card-content *ngIf="!justMakoto">
-                <audio autoplay loop [volume]="0.25">
-                    <source src="../assets/persona4-junes.mp3" type="audio/mp3">
-                </audio>
             </mat-card-content>
         </mat-card>
     </div>`,
@@ -37,6 +34,6 @@ export class BattleComponent {
     battleShout(): string {
         this.justMakoto = this.heroes[0] === 'Makoto';
         this.heroesString = this.heroes.join(', ');
-        return this.heroesString + ' is ready to battle!';
+        return this.heroesString + ' ready to battle!';
     }
 }
