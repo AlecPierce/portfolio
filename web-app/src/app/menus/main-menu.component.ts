@@ -5,6 +5,7 @@ import { DialogMenuComponent } from './dialog-menu.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BattleComponent } from "../components/battle.component";
 import { CommonModule } from '@angular/common';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
     selector: 'app-main-menu',
@@ -22,19 +23,28 @@ import { CommonModule } from '@angular/common';
         <div class="battle-container" *ngIf="heroes.length > 0">
             <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1>
             <battle [heroes]="heroes"></battle>
+            <button class="battle-button" (click)="startBattle()">
+              Battle
+            </button>
         </div>
     </div>
+    <audio autoplay loop [volume]="0.25" *ngIf="musicOn">
+      <source src="../assets/persona4-junes.mp3" type="audio/mp3">
+    </audio>
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [HeroComponent, BattleComponent, CommonModule]
+    imports: [HeroComponent, BattleComponent, CommonModule, MatExpansionModule]
 })
 export class MainMenuComponent {
+
     makoto: Hero = new Hero(1, 'Makoto', 'Hero', 0);
     yukari: Hero = new Hero(2, 'Yukari', 'Mage', 0);
 
     heroes: string[] = [];
         // Add more heroes as needed
-    
+    musicOn: boolean = false;
+    musicSrc: string = "";
+
       constructor(private dialog: MatDialog) {}
     
       openHeroDialog(hero: Hero): void {
@@ -44,7 +54,7 @@ export class MainMenuComponent {
         });
     
         dialogRef.afterClosed().subscribe(result => {
-          if (result.action === 'battle') {
+          if (result.action === 'add') {
             this.addHeroToBattle(result.hero.heroName);
           } else if (result.action === 'remove') {
             this.heroes = this.heroes.filter(heroName => heroName !== result.hero.heroName);
@@ -55,6 +65,15 @@ export class MainMenuComponent {
       addHeroToBattle(heroName: string): void {
         if (!this.heroes.includes(heroName))
         this.heroes.push(heroName);
+      }
+
+      startBattle() {
+        this.setMusic();
+        this.musicOn = true;
+      }
+
+      setMusic() {
+        this.musicSrc = this.heroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
       }
 
     title = 'Main Menu';

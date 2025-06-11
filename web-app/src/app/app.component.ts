@@ -1,16 +1,14 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import {RouterModule} from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
     selector: 'app-root',
     styleUrls: ['./app.component.scss'],
-    imports: [RouterModule],
+    imports: [RouterOutlet, CommonModule, RouterLink],
     template: `
       <main>
-        <a [routerLink]="['/hero-menu']">
-          <header class="brand-name">
-            <img class="brand-logo" src="/assets/logo.svg" alt="logo" aria-hidden="true" />
-          </header>
+        <a routerLink="/hero-menu">
           <button class="nav-button">
             Hero Menu
           </button>
@@ -19,8 +17,10 @@ import {RouterModule} from '@angular/router';
           <router-outlet></router-outlet>
         </section>
       </main>
-    `
+    `,
+    standalone: true
 })
+//https://www.tektutorialshub.com/angular/activatedroute-in-angular/#activatedroute-example
 export class AppComponent {
   title = 'web-app';
 }
