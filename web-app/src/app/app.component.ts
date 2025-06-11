@@ -20,7 +20,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
     `,
     standalone: true
 })
-//https://www.tektutorialshub.com/angular/activatedroute-in-angular/#activatedroute-example
+
 export class AppComponent {
   title = 'web-app';
 }
