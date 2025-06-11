@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { HeroComponent } from '../components/hero.component';
 import { DialogMenuComponent } from './dialog-menu.component';
@@ -29,13 +29,13 @@ import { MatExpansionModule } from '@angular/material/expansion';
         </div>
     </div>
     <audio autoplay loop [volume]="0.25" *ngIf="musicOn">
-      <source src="../assets/persona4-junes.mp3" type="audio/mp3">
+      <source [src]="musicSrc" type="audio/mp3">
     </audio>
     `,
     styleUrls: ['./main-menu.component.scss'],
     imports: [HeroComponent, BattleComponent, CommonModule, MatExpansionModule]
 })
-export class MainMenuComponent {
+export class MainMenuComponent implements OnDestroy {
 
     makoto: Hero = new Hero(1, 'Makoto', 'Hero', 0);
     yukari: Hero = new Hero(2, 'Yukari', 'Mage', 0);
@@ -46,17 +46,23 @@ export class MainMenuComponent {
     musicSrc: string = "";
 
       constructor(private dialog: MatDialog) {}
+
+      ngOnDestroy(): void {
+          this.dialog.closeAll();
+      }
     
       openHeroDialog(hero: Hero): void {
         const dialogRef = this.dialog.open(DialogMenuComponent, {
           width: '250px',
           data: hero
         });
+
+        this.setMusic();
     
         dialogRef.afterClosed().subscribe(result => {
-          if (result.action === 'add') {
+          if (result?.action === 'add') {
             this.addHeroToBattle(result.hero.heroName);
-          } else if (result.action === 'remove') {
+          } else if (result?.action === 'remove') {
             this.heroes = this.heroes.filter(heroName => heroName !== result.hero.heroName);
           }
         });
@@ -68,12 +74,15 @@ export class MainMenuComponent {
       }
 
       startBattle() {
-        this.setMusic();
-        this.musicOn = true;
+        this.setMusic(true);
       }
 
-      setMusic() {
-        this.musicSrc = this.heroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
+      setMusic(turnOn: boolean = false) {
+        this.musicOn = false;
+        if (turnOn) {
+          this.musicSrc = this.heroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
+          this.musicOn = true;
+        }
       }
 
     title = 'Main Menu';

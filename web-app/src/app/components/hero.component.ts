@@ -5,7 +5,7 @@ import { StatsComponent } from './stats.component';
 @Component({
     selector: 'hero',
     template: `
-    <div class="bg-gray-700 p-4 rounded-lg shadow-lg w-64 h-auto">
+    <div class="bg-gray-700 p-4 rounded-lg shadow-lg w-64 h-auto" style="cursor: pointer;">
         <div class="rounded-lg p-10 bg-blue-600">
             <h2 class="text-2xl font-italic mb-4">{{hero.heroName}}</h2>
             <p class="mb-2">{{description}}</p>
@@ -31,8 +31,6 @@ export class HeroComponent {
     showBattleEvent() {
         this.showBattle.emit(this.hero.heroName);
     }
-
-    // stats: Stats = this.hero.stats;
 
     title = 'Hero Component';
 }
