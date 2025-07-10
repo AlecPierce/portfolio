@@ -2,12 +2,12 @@ import { Component, Inject, signal } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Hero } from '../classes/hero';
-import { CommonModule } from '@angular/common';
+
 import { StatsComponent } from '../components/stats.component';
 @Component({
     selector: 'app-dialog-menu',
     templateUrl: './dialog-menu.component.html',
-    imports: [CommonModule, StatsComponent, MatExpansionModule],
+    imports: [StatsComponent, MatExpansionModule],
     styleUrls: ['./dialog-menu.component.scss']
 })
 export class DialogMenuComponent {

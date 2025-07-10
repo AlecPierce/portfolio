@@ -1,7 +1,7 @@
 import { Component, Input, NgModule } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'battle',
@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
     </div>`,
     standalone: true,
     styleUrls: [],
-    imports: [MatCardModule, CommonModule]
+    imports: [MatCardModule]
 })
 export class BattleComponent {
 

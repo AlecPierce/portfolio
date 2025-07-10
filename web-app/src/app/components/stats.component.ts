@@ -1,17 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { Stats } from '../classes/stats';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
     selector: 'stats',
     template: `
-        <span *ngIf="!isFullStats">
+        @if (!isFullStats) {
+          <span>
             <p>Level: {{stats.getLevel()}}</p>
             <p>EXP: {{stats.getTotalExp()}}</p>
             <p>HP: {{stats.getPrimaryStats().getHp()}}</p>
             <p>MP: {{stats.getPrimaryStats().getMp()}}</p>
-        </span>
-        <span *ngIf="isFullStats">
+          </span>
+        }
+        @if (isFullStats) {
+          <span>
             <p>HP: {{stats.getPrimaryStats().getHp()}}</p>
             <p>MP: {{stats.getPrimaryStats().getMp()}}</p>
             <p>Attack: {{stats.getPrimaryStats().getAtk()}}</p>
@@ -25,11 +28,12 @@ import { CommonModule } from '@angular/common';
             <p>Accuracy: {{stats.getSecondaryStats().getHit()}}</p>
             <p>Evasion: {{stats.getSecondaryStats().getEva()}}</p>
             <p>Resistance: {{stats.getSecondaryStats().getRes()}}</p>
-        </span>
-    `,
+          </span>
+        }
+        `,
     standalone: true,
     styleUrls: [],
-    imports: [CommonModule]
+    imports: []
 })
 export class StatsComponent {
     @Input({ required: true })
