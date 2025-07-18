@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BattleComponent } from "../components/battle.component";
 import { CarouselModule } from 'primeng/carousel';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { HeroFactory } from '../data/heroes';
 
 @Component({
     selector: 'app-main-menu',
@@ -42,26 +43,16 @@ import { MatExpansionModule } from '@angular/material/expansion';
     imports: [HeroComponent, BattleComponent, MatExpansionModule, CarouselModule]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
-
-    makoto: Hero = new Hero(1, 'Makoto', 'The main character from Persona 3', 'Hero', 0);
-    yukari: Hero = new Hero(2, 'Yukari', 'One of the heroines from Persona 3', 'Archer', 0);
-    aigis: Hero = new Hero(3, 'Aigis', 'One of the heroines from Persona 3; She fights alongside the team with a bow and wind abilities', 'Red Mage', 0);
-    fuuka: Hero = new Hero(4, 'Fuuka', 'One of the heroines from Persona 3; She guides the team through the Dark Hour', 'Support', 0);
-    mitsuru: Hero = new Hero(5, 'Mitsuru', 'One of the heroines from Persona 3; She leads the team until Makoto showed up', 'Blue Mage', 0);
-    junpei: Hero = new Hero(6, 'Junpei', 'One of the heroes from Persona 3; He fights alongside the team with a baseball bat', 'Brawler', 0);
-    akihiko: Hero = new Hero(7, 'Akihiko', 'One of the heroes from Persona 3; He fights with his knuckles and electric abilities', 'Berserker', 0);
-    ken: Hero = new Hero(8, 'Ken', 'One of the heroes from Persona 3; Small lad that joins later on in the story; Uses electric/healing abilities', 'Lancer', 0);
-    koromaru: Hero = new Hero(9, 'Koromaru', 'One of the heroes from Persona 3; Friendly neighborhood dog who lost his owner and finds himself a new home; Uses dark/fire abilities and fights with a kunai', 'Red Mage', 0);
-
     responsiveOptions: any[] | undefined;
-    heroes: Hero[] = [this.makoto, this.yukari, this.aigis, this.fuuka, this.mitsuru, this.junpei, this.akihiko, this.ken, this.koromaru];
+    heroes: Hero[] = [];
     heroNames: string[] = [];
     addedHeroes: Hero[] = [];
-        // Add more heroes as needed
     musicOn: boolean = false;
     musicSrc: string = "";
+    heroFactory = new HeroFactory();
 
       constructor(private dialog: MatDialog) {}
+
       ngOnInit(): void {
         this.responsiveOptions = [
             {
@@ -85,6 +76,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
                 numScroll: 1
             }
         ];
+        this.heroes = this.heroFactory.createHeroList();
       }
 
       ngOnDestroy(): void {
@@ -105,12 +97,14 @@ export class MainMenuComponent implements OnDestroy, OnInit {
           } else if (result?.action === 'remove') {
             this.addedHeroes = this.addedHeroes.filter(hero => hero.heroName !== result.hero.heroName);
           }
+          this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
         });
       }
 
       addHeroToBattle(hero: Hero): void {
-        if (!this.addedHeroes.includes(hero))
-        this.addedHeroes.push(hero);
+        if (!this.addedHeroes.includes(hero)) {
+          this.addedHeroes.push(hero);
+        }
       }
 
       startBattle() {
@@ -120,10 +114,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
       setMusic(turnOn: boolean = false) {
         this.musicOn = false;
         if (turnOn) {
-          this.musicSrc = this.heroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
           this.musicOn = true;
         }
       }
-
-    title = 'Main Menu';
 }
