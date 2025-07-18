@@ -1,10 +1,10 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { HeroComponent } from '../components/hero.component';
 import { DialogMenuComponent } from './dialog-menu.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BattleComponent } from "../components/battle.component";
-
+import { CarouselModule } from 'primeng/carousel';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
@@ -15,15 +15,17 @@ import { MatExpansionModule } from '@angular/material/expansion';
       <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
     
       <div class="hero-container">
-        <hero [hero]="makoto" description="The main character from Persona 3" (click)="openHeroDialog(makoto)"
-        (showBattle)="addHeroToBattle($event)"></hero>
-        <hero [hero]="yukari" description="One of the heroines from Persona 3" (click)="openHeroDialog(yukari)"
-        (showBattle)="addHeroToBattle($event)"></hero>
+            <p-carousel [value]="heroes" [numVisible]="6" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
+              <ng-template let-hero #item>
+                <hero [hero]="hero" [description]="hero.jobClass" (click)="openHeroDialog(hero)"
+                        (showBattle)="addHeroToBattle($event)"></hero>
+              </ng-template>
+            </p-carousel>
       </div>
-      @if (heroes.length > 0) {
+      @if (addedHeroes.length > 0) {
         <div class="battle-container">
           <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1>
-          <battle [heroes]="heroes"></battle>
+          <battle [heroes]="addedHeroes"></battle>
           <button class="battle-button" (click)="startBattle()">
             Battle
           </button>
@@ -37,19 +39,53 @@ import { MatExpansionModule } from '@angular/material/expansion';
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [HeroComponent, BattleComponent, MatExpansionModule]
+    imports: [HeroComponent, BattleComponent, MatExpansionModule, CarouselModule]
 })
-export class MainMenuComponent implements OnDestroy {
+export class MainMenuComponent implements OnDestroy, OnInit {
 
-    makoto: Hero = new Hero(1, 'Makoto', 'Hero', 0);
-    yukari: Hero = new Hero(2, 'Yukari', 'Mage', 0);
+    makoto: Hero = new Hero(1, 'Makoto', 'The main character from Persona 3', 'Hero', 0);
+    yukari: Hero = new Hero(2, 'Yukari', 'One of the heroines from Persona 3', 'Archer', 0);
+    aigis: Hero = new Hero(3, 'Aigis', 'One of the heroines from Persona 3; She fights alongside the team with a bow and wind abilities', 'Red Mage', 0);
+    fuuka: Hero = new Hero(4, 'Fuuka', 'One of the heroines from Persona 3; She guides the team through the Dark Hour', 'Support', 0);
+    mitsuru: Hero = new Hero(5, 'Mitsuru', 'One of the heroines from Persona 3; She leads the team until Makoto showed up', 'Blue Mage', 0);
+    junpei: Hero = new Hero(6, 'Junpei', 'One of the heroes from Persona 3; He fights alongside the team with a baseball bat', 'Brawler', 0);
+    akihiko: Hero = new Hero(7, 'Akihiko', 'One of the heroes from Persona 3; He fights with his knuckles and electric abilities', 'Berserker', 0);
+    ken: Hero = new Hero(8, 'Ken', 'One of the heroes from Persona 3; Small lad that joins later on in the story; Uses electric/healing abilities', 'Lancer', 0);
+    koromaru: Hero = new Hero(9, 'Koromaru', 'One of the heroes from Persona 3; Friendly neighborhood dog who lost his owner and finds himself a new home; Uses dark/fire abilities and fights with a kunai', 'Red Mage', 0);
 
-    heroes: string[] = [];
+    responsiveOptions: any[] | undefined;
+    heroes: Hero[] = [this.makoto, this.yukari, this.aigis, this.fuuka, this.mitsuru, this.junpei, this.akihiko, this.ken, this.koromaru];
+    heroNames: string[] = [];
+    addedHeroes: Hero[] = [];
         // Add more heroes as needed
     musicOn: boolean = false;
     musicSrc: string = "";
 
       constructor(private dialog: MatDialog) {}
+      ngOnInit(): void {
+        this.responsiveOptions = [
+            {
+                breakpoint: '1400px',
+                numVisible: 2,
+                numScroll: 1
+            },
+            {
+                breakpoint: '1199px',
+                numVisible: 3,
+                numScroll: 1
+            },
+            {
+                breakpoint: '767px',
+                numVisible: 2,
+                numScroll: 1
+            },
+            {
+                breakpoint: '575px',
+                numVisible: 1,
+                numScroll: 1
+            }
+        ];
+      }
 
       ngOnDestroy(): void {
           this.dialog.closeAll();
@@ -65,16 +101,16 @@ export class MainMenuComponent implements OnDestroy {
     
         dialogRef.afterClosed().subscribe(result => {
           if (result?.action === 'add') {
-            this.addHeroToBattle(result.hero.heroName);
+            this.addHeroToBattle(result.hero);
           } else if (result?.action === 'remove') {
-            this.heroes = this.heroes.filter(heroName => heroName !== result.hero.heroName);
+            this.addedHeroes = this.addedHeroes.filter(hero => hero.heroName !== result.hero.heroName);
           }
         });
       }
 
-      addHeroToBattle(heroName: string): void {
-        if (!this.heroes.includes(heroName))
-        this.heroes.push(heroName);
+      addHeroToBattle(hero: Hero): void {
+        if (!this.addedHeroes.includes(hero))
+        this.addedHeroes.push(hero);
       }
 
       startBattle() {

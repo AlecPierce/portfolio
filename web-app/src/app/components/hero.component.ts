@@ -26,10 +26,10 @@ export class HeroComponent {
     @Input({ required: false })
     description?: string;
 
-    @Output() showBattle = new EventEmitter<string>();
+    @Output() showBattle = new EventEmitter<Hero>();
 
     showBattleEvent() {
-        this.showBattle.emit(this.hero.heroName);
+        this.showBattle.emit(this.hero);
     }
 
     title = 'Hero Component';

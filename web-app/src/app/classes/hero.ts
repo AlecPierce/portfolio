@@ -3,14 +3,16 @@ import { Stats } from "./stats";
 export class Hero {
     id: number;
     heroName: string;
+    description: string;
     jobClass: string;
     totalExp: number;
     stats: Stats;
     isInParty: boolean = false;
 
-    constructor(id: number, heroName: string, jobClass: string, totalExp: number) {
+    constructor(id: number, heroName: string, description: string, jobClass: string, totalExp: number) {
         this.id = id;
         this.heroName = heroName;
+        this.description = description;
         this.jobClass = jobClass;
         this.totalExp = totalExp;
         this.stats = new Stats(this.id, 1, this.totalExp);
