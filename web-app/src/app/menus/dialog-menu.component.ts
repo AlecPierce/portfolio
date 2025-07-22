@@ -4,6 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Hero } from '../classes/hero';
 
 import { StatsComponent } from '../components/stats.component';
+import { HeroDialogAction } from '../enums/dialogActions.enum';
+import { HeroDialogEvent } from '../events/heroDialogEvent';
 @Component({
     selector: 'app-dialog-menu',
     templateUrl: './dialog-menu.component.html',
@@ -11,8 +13,7 @@ import { StatsComponent } from '../components/stats.component';
     styleUrls: ['./dialog-menu.component.scss']
 })
 export class DialogMenuComponent {
-  readonly panelOpenState = signal(false);
-
+    readonly panelOpenState = signal(false);
 
       constructor(
         public dialogRef: MatDialogRef<DialogMenuComponent>,
@@ -22,13 +23,13 @@ export class DialogMenuComponent {
       public alreadyInParty = this.data?.isInParty ? true : false;
       public hero = this.data;
     
-      onAction(action: string): void {
-        if (action === 'add') {
+      onAction(action: HeroDialogAction): void {
+        if (action === HeroDialogAction.Add) {
           this.data.isInParty = true;
-        } else if (action === 'remove') {
+        } else if (action === HeroDialogAction.Remove) {
           this.data.isInParty = false;
         }
-        this.dialogRef.close({action: action, hero: this.data});
+        this.dialogRef.close(new HeroDialogEvent(action, this.data));
       }
     
       closeDialog(): void {

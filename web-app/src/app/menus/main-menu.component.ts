@@ -7,6 +7,8 @@ import { BattleComponent } from "../components/battle.component";
 import { CarouselModule } from 'primeng/carousel';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HeroFactory } from '../data/heroes';
+import { HeroDialogEvent } from '../events/heroDialogEvent';
+import { HeroDialogAction } from '../enums/dialogActions.enum';
 
 @Component({
     selector: 'app-main-menu',
@@ -16,10 +18,11 @@ import { HeroFactory } from '../data/heroes';
       <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
     
       <div class="hero-container">
+      <dialog (heroDialogClicked)="heroDialogOpened($event)" (heroDialogClosed)="heroDialogClosed($event)"></dialog>
             <p-carousel [value]="heroes" [numVisible]="6" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
               <ng-template let-hero #item>
-                <hero [hero]="hero" [description]="hero.jobClass" (click)="openHeroDialog(hero)"
-                        (showBattle)="addHeroToBattle($event)"></hero>
+                <hero [hero]="hero" [description]="hero.jobClass" (click)="openHeroDialog($event)"
+                        (addHero)="addHeroToBattle($event)"></hero>
               </ng-template>
             </p-carousel>
       </div>
@@ -54,48 +57,28 @@ export class MainMenuComponent implements OnDestroy, OnInit {
       constructor(private dialog: MatDialog) {}
 
       ngOnInit(): void {
-        this.responsiveOptions = [
-            {
-                breakpoint: '1400px',
-                numVisible: 2,
-                numScroll: 1
-            },
-            {
-                breakpoint: '1199px',
-                numVisible: 3,
-                numScroll: 1
-            },
-            {
-                breakpoint: '767px',
-                numVisible: 2,
-                numScroll: 1
-            },
-            {
-                breakpoint: '575px',
-                numVisible: 1,
-                numScroll: 1
-            }
-        ];
         this.heroes = this.heroFactory.createHeroList();
       }
 
       ngOnDestroy(): void {
           this.dialog.closeAll();
       }
+
+      heroDialogOpened(): void {
+        this.setMusic();
+      }
     
-      openHeroDialog(hero: Hero): void {
+      heroDialogClosed(dialogEvent: HeroDialogEvent): void {
         const dialogRef = this.dialog.open(DialogMenuComponent, {
           width: '250px',
-          data: hero
+          data: dialogEvent.hero
         });
-
-        this.setMusic();
     
-        dialogRef.afterClosed().subscribe(result => {
-          if (result?.action === 'add') {
-            this.addHeroToBattle(result.hero);
-          } else if (result?.action === 'remove') {
-            this.addedHeroes = this.addedHeroes.filter(hero => hero.heroName !== result.hero.heroName);
+        dialogRef.afterClosed().subscribe((dialogEvent: HeroDialogEvent) => {
+          if (dialogEvent.action === HeroDialogAction.Add) {
+            this.addHeroToBattle(dialogEvent.hero);
+          } else if (dialogEvent.action === HeroDialogAction.Remove) {
+            this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
           }
           this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
         });
