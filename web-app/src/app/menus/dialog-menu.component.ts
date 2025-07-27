@@ -22,6 +22,14 @@ export class DialogMenuComponent {
 
       public alreadyInParty = this.data?.isInParty ? true : false;
       public hero = this.data;
+
+      addClicked(): void {
+        this.onAction(HeroDialogAction.Add);
+      }
+
+      removeClicked(): void {
+        this.onAction(HeroDialogAction.Remove);
+      }
     
       onAction(action: HeroDialogAction): void {
         if (action === HeroDialogAction.Add) {

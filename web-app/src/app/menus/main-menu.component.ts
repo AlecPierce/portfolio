@@ -1,14 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Hero } from '../classes/hero';
-import { HeroComponent } from '../components/hero.component';
 import { DialogMenuComponent } from './dialog-menu.component';
 import { MatDialog } from '@angular/material/dialog';
 import { BattleComponent } from "../components/battle.component";
-import { CarouselModule } from 'primeng/carousel';
-import { MatExpansionModule } from '@angular/material/expansion';
 import { HeroFactory } from '../data/heroes';
 import { HeroDialogEvent } from '../events/heroDialogEvent';
 import { HeroDialogAction } from '../enums/dialogActions.enum';
+import { CarouselComponent } from "../components/carousel.component";
 
 @Component({
     selector: 'app-main-menu',
@@ -18,14 +16,9 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
       <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
     
       <div class="hero-container">
-      <dialog (heroDialogClicked)="heroDialogOpened($event)" (heroDialogClosed)="heroDialogClosed($event)"></dialog>
-            <p-carousel [value]="heroes" [numVisible]="6" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
-              <ng-template let-hero #item>
-                <hero [hero]="hero" [description]="hero.jobClass" (click)="openHeroDialog($event)"
-                        (addHero)="addHeroToBattle($event)"></hero>
-              </ng-template>
-            </p-carousel>
+        <carousel (clicked)="heroClicked($event)" [heroes]="heroes"></carousel>
       </div>
+
       @if (addedHeroes.length > 0) {
         <div class="battle-container">
           <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1>
@@ -43,7 +36,7 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [HeroComponent, BattleComponent, MatExpansionModule, CarouselModule]
+    imports: [BattleComponent, CarouselComponent]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
     responsiveOptions: any[] | undefined;
@@ -64,24 +57,24 @@ export class MainMenuComponent implements OnDestroy, OnInit {
           this.dialog.closeAll();
       }
 
-      heroDialogOpened(): void {
+      heroClicked(hero: Hero): void {
         this.setMusic();
-      }
-    
-      heroDialogClosed(dialogEvent: HeroDialogEvent): void {
         const dialogRef = this.dialog.open(DialogMenuComponent, {
           width: '250px',
-          data: dialogEvent.hero
+          data: hero
         });
-    
         dialogRef.afterClosed().subscribe((dialogEvent: HeroDialogEvent) => {
-          if (dialogEvent.action === HeroDialogAction.Add) {
-            this.addHeroToBattle(dialogEvent.hero);
-          } else if (dialogEvent.action === HeroDialogAction.Remove) {
-            this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
-          }
-          this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
+          this.heroDialogClosed(dialogEvent)
         });
+      }
+
+      heroDialogClosed(dialogEvent: HeroDialogEvent): void {
+        if (dialogEvent.action === HeroDialogAction.Add) {
+          this.addHeroToBattle(dialogEvent.hero);
+        } else if (dialogEvent.action === HeroDialogAction.Remove) {
+          this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
+        }
+        this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
       }
 
       addHeroToBattle(hero: Hero): void {

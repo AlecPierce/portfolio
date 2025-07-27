@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { HeroComponent } from "./hero.component";
 import { CarouselModule } from "primeng/carousel";
 import { Hero } from "../classes/hero";
@@ -9,8 +9,7 @@ import { HeroFactory } from "../data/heroes";
     template: `
             <p-carousel [value]="heroes" [numVisible]="6" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
               <ng-template let-hero #item>
-                <hero [hero]="hero" [description]="hero.jobClass" (click)="openHeroDialog(hero)"
-                        (showBattle)="addHeroToBattle($event)"></hero>
+                <hero [hero]="hero" [description]="hero.jobClass" (clicked)="heroClicked($event)"></hero>
               </ng-template>
             </p-carousel>`,
     imports: [HeroComponent, CarouselModule]
@@ -20,7 +19,7 @@ export class CarouselComponent implements OnInit {
     heroFactory = new HeroFactory();
     
     @Input({ required: true })
-    heroes: Hero[] | undefined;
+    heroes: Hero[] = [];
 
     ngOnInit(): void {
         this.responsiveOptions = [
@@ -50,15 +49,9 @@ export class CarouselComponent implements OnInit {
         }
     }
 
-    @Output() heroDialogClosed = new EventEmitter<Hero>();
-    heroDialogClosedEvent() {
-        this.heroDialogClosed.emit()
+    @Output() clicked = new EventEmitter<Hero>();
+
+    heroClicked(hero: Hero) {
+        this.clicked.emit(hero);
     }
-        @Output() showBattle = new EventEmitter<Hero>();
-    
-        showBattleEvent() {
-            this.showBattle.emit(this.hero);
-        }
-
-
 }

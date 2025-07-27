@@ -13,7 +13,7 @@
         <mat-expansion-panel
           (opened)="panelOpenState.set(true)"
           (closed)="panelOpenState.set(false)"
-          >
+        >
           <mat-expansion-panel-header>
             <mat-panel-title>{{
               panelOpenState() ? "Full stats" : "View"
@@ -26,20 +26,11 @@
   </div>
   <div class="dialog-footer">
     @if (!alreadyInParty) {
-      <button
-        class="action-button"
-        (click)="onAction('add')"
-        >
-        Add to Party
-      </button>
-    }
-    @if (alreadyInParty) {
-      <button
-        class="action-button"
-        (click)="onAction('remove')"
-        >
-        Remove from Party
-      </button>
+    <button class="action-button" (click)="addClicked()">Add to Party</button>
+    } @if (alreadyInParty) {
+    <button class="action-button" (click)="removeClicked()">
+      Remove from Party
+    </button>
     }
   </div>
 </div>
