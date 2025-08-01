@@ -7,14 +7,28 @@ import { HeroFactory } from '../data/heroes';
 import { HeroDialogEvent } from '../events/heroDialogEvent';
 import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from "../components/carousel.component";
+import { dragDropComponent } from '../components/dragDrop.component';
 
 @Component({
     selector: 'app-main-menu',
     template: `
     <div class="flexbox text-white">
-      <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
-      <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
+      @if(!v2on) {
+        <button class="button" (click)="toggleV2()">v2</button>
+      }
+      @if(v2on) {
+        <button class="button" (click)="toggleV2()">v1</button>
+      }
+      @if(!v2on) {
+        <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
+        <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
+      }
+      @if(v2on) {
+        <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
+        <h2 class="text-xl text-center my-4">Drag Available Heroes over to Party to get started</h2>
+      }
     
+    @if (!v2on) {
       <div class="hero-container">
         <carousel (clicked)="heroClicked($event)" [heroes]="heroes"></carousel>
       </div>
@@ -28,7 +42,14 @@ import { CarouselComponent } from "../components/carousel.component";
           </button>
         </div>
       }
+    }
+
+    @if (v2on) {
+      <dragdrop></dragdrop>
+    }
     </div>
+
+
     @if (musicOn) {
       <audio autoplay loop [volume]="0.25">
         <source [src]="musicSrc" type="audio/mp3">
@@ -36,7 +57,7 @@ import { CarouselComponent } from "../components/carousel.component";
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [BattleComponent, CarouselComponent]
+    imports: [BattleComponent, CarouselComponent, dragDropComponent]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
     responsiveOptions: any[] | undefined;
@@ -46,6 +67,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
     musicOn: boolean = false;
     musicSrc: string = "";
     heroFactory = new HeroFactory();
+    v2on = false;
 
       constructor(private dialog: MatDialog) {}
 
@@ -55,6 +77,10 @@ export class MainMenuComponent implements OnDestroy, OnInit {
 
       ngOnDestroy(): void {
           this.dialog.closeAll();
+      }
+
+      toggleV2(): void {
+        this.v2on = !this.v2on;
       }
 
       heroClicked(hero: Hero): void {
