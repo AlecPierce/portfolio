@@ -48,7 +48,7 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
         </div>
     </div>
     `,
-  styleUrl: 'dragdrop.component.css',
+  styleUrl: 'dragDrop.component.css',
   imports: [CdkDropListGroup, CdkDropList, CdkDrag, CdkScrollable],
 })
 export class dragDropComponent implements OnInit {
