@@ -2,11 +2,11 @@
     display: inline-block;
     white-space: nowrap;
     animation: textScroll 5s infinite linear;
-    padding-left: 1%; /*Initial offset*/
+    padding-left: 15%; /*Initial offset*/
 }
 
 @keyframes textScroll {
   to {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
 }

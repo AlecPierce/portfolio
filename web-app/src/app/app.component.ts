@@ -15,7 +15,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
       </a>
         <section class="content text-white">
           <h1 class="text-6xl text-center font-bold my-4 tracking-in-expand-fwd">
-            Alec Pierce's Portfolio
+            Hero System
           </h1>
           <router-outlet></router-outlet>
         </section>

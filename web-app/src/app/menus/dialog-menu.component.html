@@ -1,36 +1,66 @@
-<div class="dialog">
-  <div class="dialog-header">
-    <button class="close-button" (click)="closeDialog()">X</button>
-  </div>
-  <div class="dialog-content text-white">
-    <p>{{ hero.heroName }}</p>
-    <p>Class: {{ hero.jobClass }}</p>
-    <p>EXP: {{ hero.totalExp }}</p>
+<!-- <h2 mat-dialog-title>Hi {{data.name}}</h2>
+<mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="animal" />
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton (click)="onNoClick()">No Thanks</button>
+  <button matButton [mat-dialog-close]="animal()" cdkFocusInitial>Ok</button>
+</mat-dialog-actions> -->
 
-    <span>
-      Stats
-      <mat-accordion>
-        <mat-expansion-panel
-          (opened)="panelOpenState.set(true)"
-          (closed)="panelOpenState.set(false)"
-        >
-          <mat-expansion-panel-header>
-            <mat-panel-title>{{
-              panelOpenState() ? "Full stats" : "View"
-            }}</mat-panel-title>
-          </mat-expansion-panel-header>
-          <stats [stats]="hero.stats" [isFullStats]="true"></stats>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </span>
-  </div>
-  <div class="dialog-footer">
-    @if (!alreadyInParty) {
-    <button class="action-button" (click)="addClicked()">Add to Party</button>
-    } @if (alreadyInParty) {
-    <button class="action-button" (click)="removeClicked()">
-      Remove from Party
-    </button>
-    }
+<div class="dialog px-0.5 py-0.5">
+  <div
+    class="text-white bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:focus:ring-gray-700 dark:border-gray-700"
+  >
+    <div class="dialog-header">
+      <button
+        class="text-white bg-gray-200 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
+        (click)="closeDialog()"
+      >
+        X
+      </button>
+    </div>
+    <div class="text-lg text-white">
+      <p>{{ hero.heroName }}</p>
+      <p>Class: {{ hero.jobClass }}</p>
+      <p>EXP: {{ hero.totalExp }}</p>
+
+      <p>
+        Stats
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState.set(true)"
+            (closed)="panelOpenState.set(false)"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>{{
+                panelOpenState() ? "Full stats" : "View"
+              }}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <stats [stats]="hero.stats" [isFullStats]="true"></stats>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </p>
+    </div>
+    <div class="dialog-footer">
+      @if (!alreadyInParty) {
+      <button
+        class="text-white bg-gray-200 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
+        (click)="addClicked()"
+      >
+        Add to Party
+      </button>
+      } @if (alreadyInParty) {
+      <button
+        class="text-white bg-gray-200 hover:bg-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:border-gray-700"
+        (click)="removeClicked()"
+      >
+        Remove from Party
+      </button>
+      }
+    </div>
   </div>
 </div>

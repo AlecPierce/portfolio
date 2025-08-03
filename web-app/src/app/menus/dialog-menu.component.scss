@@ -1,7 +1,10 @@
 .dialog {
     display: grid;
-    padding: 1rem;
-    background-color: darkcyan;
+}
+
+.dialog-body {
+    background-color: rgb(87, 167, 167);
+    padding: 0.5rem;
 }
 
 .dialog-header {
@@ -23,8 +26,6 @@
 }
 
 .action-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -36,8 +37,6 @@
 }
 
 .close-button {
-    background-color: #f44336; /* Red */
-    border: none;
     color: white;
     padding: 5px 22px;
     text-decoration: none;

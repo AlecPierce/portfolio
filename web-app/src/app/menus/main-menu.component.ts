@@ -37,9 +37,10 @@ import { musicComponent } from '../components/music.component';
 
       @if (addedHeroes.length > 0) {
         <div class="battle-container">
-          <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1>
-          <battle [heroes]="addedHeroes"></battle>
-          <button class="battle-button" (click)="startBattle()">
+          <!-- <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1> -->
+          <!-- <battle [heroes]="addedHeroes"></battle> -->
+          <button class="my-2 mx-1 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+          (click)="startBattle()">
             Battle
           </button>
         </div>
@@ -57,7 +58,7 @@ import { musicComponent } from '../components/music.component';
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [BattleComponent, CarouselComponent, dragDropComponent, musicComponent]
+    imports: [CarouselComponent, dragDropComponent, musicComponent]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
     responsiveOptions: any[] | undefined;
@@ -65,8 +66,8 @@ export class MainMenuComponent implements OnDestroy, OnInit {
     heroNames: string[] = [];
     addedHeroes: Hero[] = [];
     musicOn: boolean = false;
-    musicSrc: string = "";
-    musicSrcTitle: string = "";
+    musicSrc: string = "../assets/persona3-mass-destruction.mp3";
+    musicSrcTitle: string = "Persona 3 - Mass Destruction";
     heroFactory = new HeroFactory();
     v2on = false;
 
@@ -101,8 +102,6 @@ export class MainMenuComponent implements OnDestroy, OnInit {
         } else if (dialogEvent.action === HeroDialogAction.Remove) {
           this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
         }
-        this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
-        this.musicSrcTitle = this.addedHeroes.length > 1 ? "Persona 4 - Junes Theme" : "Persona 3 - Mass Destruction"
       }
 
       addHeroToBattle(hero: Hero): void {
@@ -110,8 +109,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
           this.addedHeroes.push(hero);
         }
       }
-// get a slider to adjust battle music volume
-// also have a toggle for battle music if they dont want it on
+
       startBattle() {
         this.setMusic(true);
       }
