@@ -12,5 +12,9 @@ export const routeConfig: Routes = [
       path: 'hero-menu',
       component: MainMenuComponent,
       title: 'Hero Menu',
+    },
+    {
+      path: '*',
+      redirectTo: ''
     }
   ];
