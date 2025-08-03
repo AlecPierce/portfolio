@@ -8,17 +8,19 @@ import { HeroDialogEvent } from '../events/heroDialogEvent';
 import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from "../components/carousel.component";
 import { dragDropComponent } from '../components/dragDrop.component';
+import { musicComponent } from '../components/music.component';
 
 @Component({
     selector: 'app-main-menu',
     template: `
     <div class="flexbox text-white">
-      @if(!v2on) {
+      <!-- lets keep v2 off until v1 is done -->
+      <!-- @if(!v2on) {
         <button class="button" (click)="toggleV2()">v2</button>
       }
       @if(v2on) {
         <button class="button" (click)="toggleV2()">v1</button>
-      }
+      } -->
       @if(!v2on) {
         <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
         <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
@@ -51,13 +53,11 @@ import { dragDropComponent } from '../components/dragDrop.component';
 
 
     @if (musicOn) {
-      <audio autoplay loop [volume]="0.25">
-        <source [src]="musicSrc" type="audio/mp3">
-      </audio>
+      <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [BattleComponent, CarouselComponent, dragDropComponent]
+    imports: [BattleComponent, CarouselComponent, dragDropComponent, musicComponent]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
     responsiveOptions: any[] | undefined;
@@ -66,6 +66,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
     addedHeroes: Hero[] = [];
     musicOn: boolean = false;
     musicSrc: string = "";
+    musicSrcTitle: string = "";
     heroFactory = new HeroFactory();
     v2on = false;
 
@@ -101,6 +102,7 @@ export class MainMenuComponent implements OnDestroy, OnInit {
           this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
         }
         this.musicSrc = this.addedHeroes.length > 1 ? "../assets/persona4-junes.mp3" : "../assets/persona3-mass-destruction.mp3";
+        this.musicSrcTitle = this.addedHeroes.length > 1 ? "Persona 4 - Junes Theme" : "Persona 3 - Mass Destruction"
       }
 
       addHeroToBattle(hero: Hero): void {
@@ -108,7 +110,8 @@ export class MainMenuComponent implements OnDestroy, OnInit {
           this.addedHeroes.push(hero);
         }
       }
-
+// get a slider to adjust battle music volume
+// also have a toggle for battle music if they dont want it on
       startBattle() {
         this.setMusic(true);
       }

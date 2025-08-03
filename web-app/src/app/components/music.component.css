@@ -1,0 +1,12 @@
+.music-src-title {
+    display: inline-block;
+    white-space: nowrap;
+    animation: textScroll 5s infinite linear;
+    padding-left: 1%; /*Initial offset*/
+}
+
+@keyframes textScroll {
+  to {
+    transform: translateX(-100%);
+  }
+}

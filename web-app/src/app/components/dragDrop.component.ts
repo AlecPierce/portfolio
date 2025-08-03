@@ -9,9 +9,6 @@ import {
 } from '@angular/cdk/drag-drop';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 
-/**
- * @title Drag&Drop disabled sorting
- */
 @Component({
   selector: 'dragdrop',
   template: `
@@ -49,12 +46,17 @@ import { CdkScrollable } from '@angular/cdk/scrolling';
     </div>
     `,
   styleUrl: 'dragDrop.component.css',
+  standalone: true,
   imports: [CdkDropListGroup, CdkDropList, CdkDrag, CdkScrollable],
 })
 export class dragDropComponent implements OnInit {
   heroes = ['Makoto', 'Yukari', 'Aigis', 'Fuuka', 'Mitsuru', 'Junpei', 'Ken', 'Koromaru'];
 
   party = ['Makoto'];
+
+  // add an output event so it can see whos ready to battle so main menu can display the details
+  // add preview if you click and hold? not sure what I want to do there but the data for selected party member
+  //    does need to get displayed either that way or off to the right maybe
 
   ngOnInit(): void {
     this.party = [];
