@@ -10,3 +10,7 @@
   [dev.https]
     certFile = "cert.pem"
     keyFile = "key.pem"
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
