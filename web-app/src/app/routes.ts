@@ -6,7 +6,7 @@ export const routeConfig: Routes = [
     {
       path: '',
       component: HomeComponent,
-      title: '',
+      title: 'Home',
     },
     {
       path: 'hero-menu',
@@ -14,7 +14,7 @@ export const routeConfig: Routes = [
       title: 'Hero Menu',
     },
     {
-      path: '*',
+      path: '**',
       redirectTo: ''
     }
   ];

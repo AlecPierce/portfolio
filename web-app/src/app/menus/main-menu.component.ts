@@ -9,10 +9,16 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from "../components/carousel.component";
 import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-main-menu',
     template: `
+    <a routerLink="/">
+      <button type="button" class="my-2 mx-1 text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
+        Home
+      </button>
+    </a>
     <div class="flexbox text-white">
       <!-- lets keep v2 off until v1 is done -->
       <!-- @if(!v2on) {
@@ -58,7 +64,7 @@ import { musicComponent } from '../components/music.component';
     }
     `,
     styleUrls: ['./main-menu.component.scss'],
-    imports: [CarouselComponent, dragDropComponent, musicComponent]
+    imports: [CarouselComponent, dragDropComponent, musicComponent, RouterLink]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
     responsiveOptions: any[] | undefined;
