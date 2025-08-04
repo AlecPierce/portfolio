@@ -3,7 +3,7 @@ import { Component, Input } from "@angular/core";
 @Component({
   selector: 'music',
   template: `
-  <div class="grid justify-items-center">
+  <div class="grid justify-items-center text-white">
     <div class="music-src-title px-2">
         {{musicSrcTitle}}
     </div>   
@@ -26,6 +26,8 @@ import { Component, Input } from "@angular/core";
         -</button>
     </div>
 
+    <!-- need to fix bug where -10% shows up, should have disabled - -->
+    <!-- need to fix bug where it goes from 80% to 89%, 99%, and allows 109% which + should get disabled when at 100% or more -->
     <div>
     @if(musicOn) {
         @if(musicVolume > 0) {
