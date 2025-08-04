@@ -17,7 +17,7 @@ import { HeroFactory } from "../data/heroes";
 export class CarouselComponent implements OnInit {
     responsiveOptions: any[] | undefined;
     heroFactory = new HeroFactory();
-    
+
     @Input({ required: true })
     heroes: Hero[] = [];
 

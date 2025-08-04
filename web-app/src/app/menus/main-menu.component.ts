@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { DialogMenuComponent } from './dialog-menu.component';
 import { MatDialog } from '@angular/material/dialog';
-import { BattleComponent } from "../components/battle.component";
 import { HeroFactory } from '../data/heroes';
 import { HeroDialogEvent } from '../events/heroDialogEvent';
 import { HeroDialogAction } from '../enums/dialogActions.enum';
@@ -12,8 +11,8 @@ import { musicComponent } from '../components/music.component';
 import { RouterLink } from '@angular/router';
 
 @Component({
-    selector: 'app-main-menu',
-    template: `
+  selector: 'app-main-menu',
+  template: `
     <a routerLink="/">
       <button type="button" class="my-2 mx-2 text-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800">
         Home
@@ -63,67 +62,67 @@ import { RouterLink } from '@angular/router';
       <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
     }
     `,
-    styleUrls: ['./main-menu.component.scss'],
-    imports: [CarouselComponent, dragDropComponent, musicComponent, RouterLink]
+  styleUrls: ['./main-menu.component.scss'],
+  imports: [CarouselComponent, dragDropComponent, musicComponent, RouterLink]
 })
 export class MainMenuComponent implements OnDestroy, OnInit {
-    responsiveOptions: any[] | undefined;
-    heroes: Hero[] = [];
-    heroNames: string[] = [];
-    addedHeroes: Hero[] = [];
-    musicOn: boolean = false;
-    musicSrc: string = "../assets/persona3-mass-destruction.mp3";
-    musicSrcTitle: string = "Persona 3 - Mass Destruction";
-    heroFactory = new HeroFactory();
-    v2on = false;
+  responsiveOptions: any[] | undefined;
+  heroes: Hero[] = [];
+  heroNames: string[] = [];
+  addedHeroes: Hero[] = [];
+  musicOn: boolean = false;
+  musicSrc: string = "../assets/persona3-mass-destruction.mp3";
+  musicSrcTitle: string = "Persona 3 - Mass Destruction";
+  heroFactory = new HeroFactory();
+  v2on = false;
 
-      constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
-      ngOnInit(): void {
-        this.heroes = this.heroFactory.createHeroList();
-      }
+  ngOnInit(): void {
+    this.heroes = this.heroFactory.createHeroList();
+  }
 
-      ngOnDestroy(): void {
-          this.dialog.closeAll();
-      }
+  ngOnDestroy(): void {
+    this.dialog.closeAll();
+  }
 
-      toggleV2(): void {
-        this.v2on = !this.v2on;
-      }
+  toggleV2(): void {
+    this.v2on = !this.v2on;
+  }
 
-      heroClicked(hero: Hero): void {
-        this.setMusic();
-        const dialogRef = this.dialog.open(DialogMenuComponent, {
-          width: '250px',
-          data: hero
-        });
-        dialogRef.afterClosed().subscribe((dialogEvent: HeroDialogEvent) => {
-          this.heroDialogClosed(dialogEvent)
-        });
-      }
+  heroClicked(hero: Hero): void {
+    this.setMusic();
+    const dialogRef = this.dialog.open(DialogMenuComponent, {
+      width: '250px',
+      data: hero
+    });
+    dialogRef.afterClosed().subscribe((dialogEvent: HeroDialogEvent) => {
+      this.heroDialogClosed(dialogEvent)
+    });
+  }
 
-      heroDialogClosed(dialogEvent: HeroDialogEvent): void {
-        if (dialogEvent.action === HeroDialogAction.Add) {
-          this.addHeroToBattle(dialogEvent.hero);
-        } else if (dialogEvent.action === HeroDialogAction.Remove) {
-          this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
-        }
-      }
+  heroDialogClosed(dialogEvent: HeroDialogEvent): void {
+    if (dialogEvent.action === HeroDialogAction.Add) {
+      this.addHeroToBattle(dialogEvent.hero);
+    } else if (dialogEvent.action === HeroDialogAction.Remove) {
+      this.addedHeroes = this.addedHeroes.filter(heroInParty => heroInParty.heroName !== dialogEvent.hero.heroName);
+    }
+  }
 
-      addHeroToBattle(hero: Hero): void {
-        if (!this.addedHeroes.includes(hero)) {
-          this.addedHeroes.push(hero);
-        }
-      }
+  addHeroToBattle(hero: Hero): void {
+    if (!this.addedHeroes.includes(hero)) {
+      this.addedHeroes.push(hero);
+    }
+  }
 
-      startBattle() {
-        this.setMusic(true);
-      }
+  startBattle() {
+    this.setMusic(true);
+  }
 
-      setMusic(turnOn: boolean = false) {
-        this.musicOn = false;
-        if (turnOn) {
-          this.musicOn = true;
-        }
-      }
+  setMusic(turnOn: boolean = false) {
+    this.musicOn = false;
+    if (turnOn) {
+      this.musicOn = true;
+    }
+  }
 }
