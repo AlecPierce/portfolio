@@ -15,18 +15,20 @@ import { RouterLink } from '@angular/router';
           <h1 class="text-6xl text-center font-bold my-4 tracking-in-expand-fwd">
             Alec Pierce's Space
           </h1>
+          <div class="text-2xl text-center my-4">
               <p>
                 Software engineer with 7+ years of full stack experience primarily in
                 Angular and Java
               </p>
-              <p>
+              <p class="padding-left">
                 Experienced in developing portal applications and its reactive forms, form
                 validation, and data ingestion
               </p>
-              <p>
+              <p class="negative-margin-left">
                 Avid fighting game player with a desire to grow and learn something new
                 every day
               </p>
+          </div>
         </section>
     </div>
     `,
