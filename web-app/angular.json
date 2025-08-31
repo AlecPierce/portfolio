@@ -108,9 +108,9 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://alecpierce.github.io/hero-system",
+            "baseHref": "https://alecpierce.github.io/portfolio",
             "remote": "origin",
-            "repo": "https://github.com/alecpierce/hero-system.git"
+            "repo": "https://github.com/alecpierce/portfolio.git"
           }
         }
       }
