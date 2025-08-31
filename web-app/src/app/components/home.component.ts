@@ -13,8 +13,20 @@ import { RouterLink } from '@angular/router';
       </a>
         <section class="content text-white">
           <h1 class="text-6xl text-center font-bold my-4 tracking-in-expand-fwd">
-            Hero System
+            Alec Pierce's Space
           </h1>
+              <p>
+                Software engineer with 7+ years of full stack experience primarily in
+                Angular and Java
+              </p>
+              <p>
+                Experienced in developing portal applications and its reactive forms, form
+                validation, and data ingestion
+              </p>
+              <p>
+                Avid fighting game player with a desire to grow and learn something new
+                every day
+              </p>
         </section>
     </div>
     `,

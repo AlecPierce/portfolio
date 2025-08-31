@@ -71,8 +71,8 @@ export class MainMenuComponent implements OnDestroy, OnInit {
   heroNames: string[] = [];
   addedHeroes: Hero[] = [];
   musicOn: boolean = false;
-  musicSrc: string = "../assets/persona3-mass-destruction.mp3";
-  musicSrcTitle: string = "Persona 3 - Mass Destruction";
+  musicSrc: string = "../assets/Gundam Zeta - Kamille-Bidan.mp3";
+  musicSrcTitle: string = "Gundam Zeta - Kamille Bidan";
   heroFactory = new HeroFactory();
   v2on = false;
 
