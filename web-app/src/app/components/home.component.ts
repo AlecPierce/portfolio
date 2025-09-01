@@ -29,7 +29,6 @@ import { RouterLink } from '@angular/router';
                 every day
               </p>
           </div>
-          <!-- Add: linkedin, github, email button, and dropbox link to resume -->
           <div class="text-center grid grid-cols-4">
             <div style="margin: 0 0 16rem 32rem;">
               <a href="https://www.linkedin.com/in/alexander-pierce-52430112b/">
@@ -47,7 +46,7 @@ import { RouterLink } from '@angular/router';
               </a>
             </div>
             <div style="margin: 0 16rem 0 0;">
-              <a href="https://www.dropbox.com/scl/fi/4mp6mavhghxf0uhjcgh35/Alexander-Pierce-Resume.pdf?rlkey=7dqrt3n49ik9z94i43gsxe0hd&st=g942rtmr&dl=0">
+              <a href="https://www.dropbox.com/scl/fi/fp7g6d9t4epp1kphp1kl8/Alexander-Pierce-Resume.pdf?rlkey=9key7k8mi9keo9qlrknp92895&st=t4hovztf&dl=0">
                 <i class="bi bi-dropbox icon" style="font-size: 2rem; color: cornflowerblue;" title="dropbox"></i>
               </a>
             </div>
