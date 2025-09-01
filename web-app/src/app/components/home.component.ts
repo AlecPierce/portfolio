@@ -15,6 +15,7 @@ import { RouterLink } from '@angular/router';
           <h1 class="text-6xl text-center font-bold my-4 tracking-in-expand-fwd">
             Alec Pierce's Space
           </h1>
+          <!-- issue where texts are unaligned when window size changes -->
           <div class="text-2xl text-center my-8">
               <p>
                 Software engineer with 7+ years of full stack experience primarily in
@@ -29,7 +30,8 @@ import { RouterLink } from '@angular/router';
                 every day
               </p>
           </div>
-          <div class="text-center grid grid-cols-4">
+          <!-- issue where icons are out of place when window size changes -->
+          <div class="text-center grid grid-cols-4 flex">
             <div style="margin: 0 0 16rem 32rem;">
               <a href="https://www.linkedin.com/in/alexander-pierce-52430112b/">
                 <i class="bi bi-linkedin icon" style="font-size: 2rem; color: cornflowerblue;" title="linkedin"></i>

@@ -12,7 +12,7 @@
 }
 
 .icon:hover {
-    color: darkblue;
+    color: lightblue !important;
 }
 
 /* ----------------------------------------------
