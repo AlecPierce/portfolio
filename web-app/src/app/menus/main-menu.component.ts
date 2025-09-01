@@ -37,6 +37,7 @@ import { RouterLink } from '@angular/router';
     
     @if (!v2on) {
       <div class="hero-container">
+    <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
         <carousel (clicked)="heroClicked($event)" [heroes]="heroes"></carousel>
       </div>
 

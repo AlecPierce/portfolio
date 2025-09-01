@@ -6,7 +6,7 @@ export const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Hero System - Home',
+    title: 'Alec Pierce',
   },
   {
     path: 'hero-menu',

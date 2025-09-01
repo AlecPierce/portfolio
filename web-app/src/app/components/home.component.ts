@@ -15,7 +15,7 @@ import { RouterLink } from '@angular/router';
           <h1 class="text-6xl text-center font-bold my-4 tracking-in-expand-fwd">
             Alec Pierce's Space
           </h1>
-          <div class="text-2xl text-center my-4">
+          <div class="text-2xl text-center my-8">
               <p>
                 Software engineer with 7+ years of full stack experience primarily in
                 Angular and Java
@@ -28,6 +28,29 @@ import { RouterLink } from '@angular/router';
                 Avid fighting game player with a desire to grow and learn something new
                 every day
               </p>
+          </div>
+          <!-- Add: linkedin, github, email button, and dropbox link to resume -->
+          <div class="text-center grid grid-cols-4">
+            <div style="margin: 0 0 16rem 32rem;">
+              <a href="https://www.linkedin.com/in/alexander-pierce-52430112b/">
+                <i class="bi bi-linkedin icon" style="font-size: 2rem; color: cornflowerblue;" title="linkedin"></i>
+              </a>
+            </div>
+            <div style="margin: 0 0 0 16rem;">
+              <a href="https://github.com/AlecPierce">
+                <i class="bi bi-github icon" style="font-size: 2rem; color: cornflowerblue;" title="github"></i>
+              </a>
+            </div>
+            <div>
+              <a href="mailto:alecpierce19@gmail.com">
+                <i class="bi bi-envelope-at icon" style="font-size: 2rem; color: cornflowerblue;" title="email"></i>
+              </a>
+            </div>
+            <div style="margin: 0 16rem 0 0;">
+              <a href="https://www.dropbox.com/scl/fi/4mp6mavhghxf0uhjcgh35/Alexander-Pierce-Resume.pdf?rlkey=7dqrt3n49ik9z94i43gsxe0hd&st=g942rtmr&dl=0">
+                <i class="bi bi-dropbox icon" style="font-size: 2rem; color: cornflowerblue;" title="dropbox"></i>
+              </a>
+            </div>
           </div>
         </section>
     </div>
