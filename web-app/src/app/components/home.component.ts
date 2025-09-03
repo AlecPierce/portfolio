@@ -11,7 +11,8 @@ import { RouterLink } from '@angular/router';
             Hero Menu
           </button>
       </a>
-        <section class="text-white flex flex-col justify-center gap-4">
+      <div class="home-content">
+        <section class="text-white flex flex-col gap-4">
           <div class="text-6xl font-bold tracking-in-expand-fwd pl-4">
             Alec Pierce's Space
           </div>
@@ -52,6 +53,7 @@ import { RouterLink } from '@angular/router';
             </div>
           </div>
         </section>
+      </div>
     </div>
     `,
   standalone: true,
