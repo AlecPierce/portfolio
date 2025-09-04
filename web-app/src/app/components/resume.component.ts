@@ -6,11 +6,12 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as pdfjsLib from 'pdfjs-dist';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'resume',
   imports: [],
-  template: ` <div class="pdf-container">
+  template: ` <div class="pb-8 pdf-container">
     <div #pdfContainer></div>
   </div>`,
   providers: [],
@@ -64,6 +65,8 @@ export class ResumeComponent implements OnInit, OnDestroy {
 
   async renderPage(pageNumber: number) {
     const page = await this.pdfDocument.getPage(pageNumber);
+
+    this.scale = window.innerWidth > 326 ? 1.5 : 0;
 
     const viewport = page.getViewport({ scale: this.scale });
 

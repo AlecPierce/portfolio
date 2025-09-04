@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ResumeComponent } from './resume.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'home',
   imports: [RouterLink, ResumeComponent],
   template: `
     <div>
-      <div class="m-2">
+      <div class="md:m-2">
         <a routerLink="/hero-menu">
           <button
             type="button"
@@ -17,9 +18,11 @@ import { ResumeComponent } from './resume.component';
           </button>
         </a>
       </div>
-      <div class="home-content">
+      <div class="md:justify-center md:flex">
         <section class="text-white flex flex-col gap-4">
-          <div class="text-6xl font-bold tracking-in-expand-fwd pl-4">
+          <div
+            class="mx-auto text-4xl font-bold tracking-in-expand-fwd md:pl-4 md:text-6xl"
+          >
             Alec Pierce's Space
           </div>
           <div class="text-xl">
@@ -84,7 +87,7 @@ import { ResumeComponent } from './resume.component';
               </a>
             </div>
           </div>
-          <resume class="pb-8"></resume>
+          <resume></resume>
         </section>
       </div>
     </div>
