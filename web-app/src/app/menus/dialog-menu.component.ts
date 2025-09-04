@@ -10,7 +10,8 @@ import { HeroDialogEvent } from '../events/heroDialogEvent';
   selector: 'app-dialog-menu',
   templateUrl: './dialog-menu.component.html',
   imports: [StatsComponent, MatExpansionModule],
-  styleUrls: ['./dialog-menu.component.scss']
+  styleUrls: ['./dialog-menu.component.scss'],
+  standalone: true,
 })
 export class DialogMenuComponent {
   readonly panelOpenState = signal(false);
@@ -18,7 +19,7 @@ export class DialogMenuComponent {
   constructor(
     public dialogRef: MatDialogRef<DialogMenuComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Hero
-  ) { }
+  ) {}
 
   public alreadyInParty = this.data?.isInParty ? true : false;
   public hero = this.data;
