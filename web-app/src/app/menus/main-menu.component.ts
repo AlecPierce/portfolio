@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { Hero } from '../classes/hero';
 import { DialogMenuComponent } from './dialog-menu.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -8,8 +8,7 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from '../components/carousel.component';
 import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { HeroService } from '../services/hero.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
