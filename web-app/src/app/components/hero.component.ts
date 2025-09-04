@@ -5,7 +5,7 @@ import { StatsComponent } from './stats.component';
 @Component({
   selector: 'hero',
   template: ` <div
-    class="hover:bg-gray-800 bg-gray-900 p-4 rounded-lg shadow-lg w-64 h-auto border border-[cornflowerblue]"
+    class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 h-auto border border-[cornflowerblue]"
     style="cursor: pointer;"
     (click)="heroClicked()"
   >

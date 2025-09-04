@@ -13,18 +13,20 @@
     <div class="text-lg text-white">
       <p>{{ hero.heroName }}</p>
       <p>Class: {{ hero.jobClass }}</p>
+      <p>Level: {{ hero.stats.getLevel() }}</p>
       <p>EXP: {{ hero.totalExp }}</p>
 
       <p>
-        Stats
+        @if (!isPanelOpen) {<span>Stats:</span>}
         <mat-accordion>
           <mat-expansion-panel
-            (opened)="panelOpenState.set(true)"
-            (closed)="panelOpenState.set(false)"
+            (opened)="panelOpened()"
+            (closed)="panelClosed()"
+            class="text-white bg-gray-900 border hover:bg-gray-700 font-medium rounded-lg text-md px-1 py-1 me-1 mb-1 dark:bg-gray-900 dark:hover:bg-gray-700 dark:border-[cornflowerblue]"
           >
             <mat-expansion-panel-header>
               <mat-panel-title>{{
-                panelOpenState() ? "Full stats" : "View"
+                panelOpenState() ? "Stats:" : previewStats(hero)
               }}</mat-panel-title>
             </mat-expansion-panel-header>
             <stats [stats]="hero.stats" [isFullStats]="true"></stats>

@@ -8,19 +8,22 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from '../components/carousel.component';
 import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-main-menu',
   template: `
-    <a routerLink="/">
-      <button
-        type="button"
-        class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-      >
-        Home
-      </button>
-    </a>
+    <div class="m-2">
+      <a routerLink="/">
+        <button
+          type="button"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+        >
+          Home
+        </button>
+      </a>
+    </div>
     <div class="flexbox text-white">
       <!-- lets keep v2 off until v1 is done -->
       <!-- @if(!v2on) {
@@ -44,12 +47,12 @@ import { RouterLink } from '@angular/router';
       </div>
 
       @if (addedHeroes.length > 0) {
-      <div class="battle-container">
+      <div class="battle-container m-2">
         <!-- <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1> -->
         <!-- <battle [heroes]="addedHeroes"></battle> -->
         <button
           type="button"
-          class="my-2 mx-2 text-gray-900 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
           (click)="startBattle()"
         >
           Battle
@@ -66,8 +69,9 @@ import { RouterLink } from '@angular/router';
   `,
   styleUrls: ['./main-menu.component.scss'],
   imports: [CarouselComponent, dragDropComponent, musicComponent, RouterLink],
+  standalone: true,
 })
-export class MainMenuComponent implements OnDestroy, OnInit {
+export class MainMenuComponent implements OnDestroy {
   responsiveOptions: any[] | undefined;
   heroes: Hero[] = [];
   heroNames: string[] = [];
@@ -79,10 +83,6 @@ export class MainMenuComponent implements OnDestroy, OnInit {
   v2on = false;
 
   constructor(private dialog: MatDialog) {}
-
-  ngOnInit(): void {
-    this.heroes = this.heroFactory.createHeroList();
-  }
 
   ngOnDestroy(): void {
     this.dialog.closeAll();
