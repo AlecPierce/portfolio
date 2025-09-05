@@ -65,7 +65,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
   async renderPage(pageNumber: number) {
     const page = await this.pdfDocument.getPage(pageNumber);
 
-    this.scale = window.innerWidth > 560 ? 1.5 : 0;
+    this.scale = window.innerWidth > 925 ? 1.5 : 0;
 
     const viewport = page.getViewport({ scale: this.scale });
 
