@@ -18,27 +18,23 @@ import { BehaviorSubject } from 'rxjs';
           </button>
         </a>
       </div>
-      <div class="md:justify-center md:flex">
+      <div class="min-[920px]:justify-center min-[920px]:flex">
         <section class="text-white flex flex-col gap-4">
           <div
             class="mx-auto text-4xl font-bold tracking-in-expand-fwd md:pl-4 md:text-6xl"
           >
             Alec Pierce's Space
           </div>
-          <div class="text-xl">
-            <p class="p-4 m-2 border border-[cornflowerblue] size-fit">
+          <div class="text-xl max-[920px]:size-fit">
+            <p class="p-4 m-2 border border-[cornflowerblue]">
               Software engineer with 7+ years of full stack experience primarily
               in Angular and Java
             </p>
-            <p
-              class="p-4 m-2 border border-[cornflowerblue] size-fit text-bullet"
-            >
+            <p class="p-4 m-2 border border-[cornflowerblue]">
               Experienced in developing portal applications and its reactive
               forms, form validation, and data ingestion
             </p>
-            <p
-              class="p-4 m-2 border border-[cornflowerblue] size-fit text-bullet"
-            >
+            <p class="p-4 m-2 border border-[cornflowerblue]">
               Avid fighting game player with a desire to grow and learn
               something new every day
             </p>
