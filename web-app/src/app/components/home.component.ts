@@ -72,13 +72,11 @@ import { BehaviorSubject } from 'rxjs';
             </div>
             <div class="m-2 tooltip">
               <span class="tooltip-text">Resume</span>
-              <a
-                href="https://www.dropbox.com/scl/fi/5ni0as4nad174dmv2pjj7/Alexander-Pierce-Resume.pdf?rlkey=1kwgbyc2xjly62eilyj61h1lc&st=h3ta5ikb&dl=0"
-              >
+              <a href="assets/Resume.pdf" download="AlecPierce-Resume.pdf">
                 <i
-                  class="bi bi-dropbox icon"
+                  class="bi bi-download icon"
                   style="font-size: 2rem; color: cornflowerblue;"
-                  title="dropbox"
+                  title="download resume"
                 ></i>
               </a>
             </div>
