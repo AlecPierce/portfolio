@@ -2,35 +2,49 @@
   width: 25rem;
   max-width: 100%;
   margin: 0 1.5rem 1.5rem 0;
-  display: inline-block;
+  /* display: inline-block; */
   vertical-align: top;
   padding-left: 2%;
   padding-bottom: 2%;
 }
 
 .drag-drop-list {
-  border: solid 0.063rem #ccc;
+  /* border: solid 0.063rem #ccc;
   min-height: 4rem;
   max-height: 18rem;
   background: white;
   border-radius: 0.25rem;
   overflow: hidden;
   display: block;
-  overflow-y: auto;
+  overflow-y: auto; */
+
+    display: flex;  flex-wrap: row;  max-width: max-content; width: fit-content; min-width: 25%; border-radius: 4px; min-height: 60px;   overflow: hidden;
+      
+    /* gap: 2rem;    max-width: 100%; padding: 15px; border: solid 1px #ccc;  */
+}
+
+.drag-drop-list-top {
+border: solid #ccc 2px;
+}
+
+.drag-drop-list-bottom {
+border: dotted #ccc 2px;
 }
 
 .drag-drop-box {
-  padding: 1rem 0.5rem;
+  padding: 1rem 2rem 1rem 2rem;
   border-bottom: solid 0.063rem #ccc;
   color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-align: center;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
   background: white;
   font-size: 1rem;
+  width: 100%;
 }
 
 .cdk-drag-preview {

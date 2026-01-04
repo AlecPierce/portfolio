@@ -26,11 +26,10 @@ import { RouterLink } from '@angular/router';
     <div class="flexbox text-white">
       <!-- lets keep v2 off until v1 is done -->
       <!-- @if(!v2on) {
-        <button class="button" (click)="toggleV2()">v2</button>
-      }
-      @if(v2on) {
-        <button class="button" (click)="toggleV2()">v1</button>
-      } -->
+      <button class="button" (click)="toggleV2()">v2</button>
+      } @if(v2on) {
+      <button class="button" (click)="toggleV2()">v1</button>
+      }  -->
       @if(!v2on) {
       <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
       <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
@@ -44,8 +43,12 @@ import { RouterLink } from '@angular/router';
         <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
         <carousel (clicked)="heroClicked($event)" [heroes]="heroes"></carousel>
       </div>
-
-      @if (addedHeroes.length > 0) {
+      } @if (v2on) {
+      <div class="drag-drop-container">
+        <dragdrop [heroes]="heroes"></dragdrop>
+        <!-- display clicked or hovered on hero's data off to the side not down below -->
+      </div>
+      } @if (addedHeroes.length > 0) {
       <div class="battle-container m-2">
         <!-- <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1> -->
         <!-- <battle [heroes]="addedHeroes"></battle> -->
@@ -57,8 +60,6 @@ import { RouterLink } from '@angular/router';
           Battle
         </button>
       </div>
-      } } @if (v2on) {
-      <dragdrop></dragdrop>
       }
     </div>
 
