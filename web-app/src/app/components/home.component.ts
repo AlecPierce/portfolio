@@ -39,7 +39,7 @@ import { BehaviorSubject } from 'rxjs';
               something new every day
             </p>
           </div>
-          <div class="size-fit grid grid-cols-4 pl-4">
+          <div class="size-fit grid grid-cols-5 pl-4">
             <div class="m-2 tooltip">
               <span class="tooltip-text">LinkedIn</span>
               <a href="https://www.linkedin.com/in/alexander-pierce-52430112b/">
@@ -71,7 +71,7 @@ import { BehaviorSubject } from 'rxjs';
               </a>
             </div>
             <div class="m-2 tooltip">
-              <span class="tooltip-text">Resume</span>
+              <span class="tooltip-text">Download Resume</span>
               <a href="assets/Resume.pdf" download="AlecPierce-Resume.pdf">
                 <i
                   class="bi bi-download icon"
@@ -80,8 +80,26 @@ import { BehaviorSubject } from 'rxjs';
                 ></i>
               </a>
             </div>
+            <div (click)="toggleResume()" class="m-2 tooltip">
+              <span class="tooltip-text">Show/Hide Resume</span>
+              @if (!showResume) {
+                <i
+                  class="bi bi-eye icon"
+                  style="font-size: 2rem; color: cornflowerblue;"
+                  title="show/hide resume"
+                ></i>
+              } @else {
+                <i
+                  class="bi bi-eye-slash icon"
+                  style="font-size: 2rem; color: cornflowerblue;"
+                  title="show/hide resume"
+                ></i>
+              }
+            </div>
           </div>
-          <resume></resume>
+          @if (showResume) {
+            <resume></resume>
+          }
         </section>
       </div>
     </div>
@@ -89,4 +107,14 @@ import { BehaviorSubject } from 'rxjs';
   standalone: true,
   styleUrl: 'home.component.css',
 })
-export class HomeComponent {}
+export class HomeComponent {
+  showResume = false;
+
+  constructor() {
+    this.showResume = false;
+  }
+
+  toggleResume() {
+    this.showResume = !this.showResume;
+  }
+}
