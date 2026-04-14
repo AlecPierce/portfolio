@@ -11,6 +11,46 @@ import * as pdfjsLib from 'pdfjs-dist';
   selector: 'resume',
   imports: [],
   template: ` <div class="pb-8 pdf-container">
+    <div>
+      @if (currentPageNumber == 1) {
+        <button
+          type="button"
+          (click)="nextPage()"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+        >
+          +
+        </button>
+      }
+      @if (currentPageNumber == 2) {
+        <button
+          type="button"
+          (click)="nextPage()"
+          disabled
+          class="cursor-not-allowed text-white border border-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:text-white dark:border-gray-800"
+        >
+          +
+        </button>
+      }
+      @if (currentPageNumber == 2) {
+        <button
+          type="button"
+          (click)="prevPage()"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+        >
+          -
+        </button>
+      }
+      @if (currentPageNumber == 1) {
+        <button
+          type="button"
+          (click)="prevPage()"
+          disabled
+          class="cursor-not-allowed text-white border border-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:text-white dark:border-gray-800"
+        >
+          -
+        </button>
+      }
+    </div>
     <div #pdfContainer></div>
   </div>`,
   providers: [],
@@ -22,13 +62,11 @@ export class ResumeComponent implements OnInit, OnDestroy {
 
   private pdfDocument: any;
 
-  private currentPageNumber = 1;
+  currentPageNumber = 1;
 
   private scale = 1.5;
 
   totalPages = 0;
-
-  currentPage = 1;
 
   constructor() {}
 
@@ -54,6 +92,24 @@ export class ResumeComponent implements OnInit, OnDestroy {
 
       this.totalPages = this.pdfDocument.numPages;
 
+      this.renderPage(this.currentPageNumber);
+    } catch (error) {
+      console.error('Error loading PDF:', error);
+    }
+  }
+
+  async nextPage() {
+    this.currentPageNumber++;
+    try {
+      this.renderPage(this.currentPageNumber);
+    } catch (error) {
+      console.error('Error loading PDF:', error);
+    }
+  }
+
+  async prevPage() {
+    this.currentPageNumber--;
+    try {
       this.renderPage(this.currentPageNumber);
     } catch (error) {
       console.error('Error loading PDF:', error);
