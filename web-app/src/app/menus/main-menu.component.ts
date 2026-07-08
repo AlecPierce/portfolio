@@ -22,6 +22,14 @@ import { RouterLink } from '@angular/router';
           Home
         </button>
       </a>
+      <a routerLink="/sales-analysis">
+        <button
+          type="button"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+        >
+          Sales Analyzer
+        </button>
+      </a>
     </div>
     <div class="flexbox text-white">
       <!-- lets keep v2 off until v1 is done -->
@@ -30,41 +38,48 @@ import { RouterLink } from '@angular/router';
       } @if(v2on) {
       <button class="button" (click)="toggleV2()">v1</button>
       }  -->
-      @if(!v2on) {
-      <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
-      <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
-      } @if(v2on) {
-      <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
-      <h2 class="text-xl text-center my-4">
-        Drag Available Heroes over to Party to get started
-      </h2>
-      } @if (!v2on) {
-      <div class="hero-container">
-        <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
-        <carousel (clicked)="heroClicked($event)" [heroes]="heroes"></carousel>
-      </div>
-      } @if (v2on) {
-      <div class="drag-drop-container">
-        <dragdrop [heroes]="heroes"></dragdrop>
-        <!-- display clicked or hovered on hero's data off to the side not down below -->
-      </div>
-      } @if (addedHeroes.length > 0) {
-      <div class="battle-container m-2">
-        <!-- <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1> -->
-        <!-- <battle [heroes]="addedHeroes"></battle> -->
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-          (click)="startBattle()"
-        >
-          Battle
-        </button>
-      </div>
+      @if (!v2on) {
+        <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
+        <h2 class="text-xl text-center my-4">Click on a Hero to get started</h2>
+      }
+      @if (v2on) {
+        <h1 class="text-2xl text-center font-bold my-4">Hero Menu</h1>
+        <h2 class="text-xl text-center my-4">
+          Drag Available Heroes over to Party to get started
+        </h2>
+      }
+      @if (!v2on) {
+        <div class="hero-container">
+          <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
+          <carousel
+            (clicked)="heroClicked($event)"
+            [heroes]="heroes"
+          ></carousel>
+        </div>
+      }
+      @if (v2on) {
+        <div class="drag-drop-container">
+          <dragdrop [heroes]="heroes"></dragdrop>
+          <!-- display clicked or hovered on hero's data off to the side not down below -->
+        </div>
+      }
+      @if (addedHeroes.length > 0) {
+        <div class="battle-container m-2">
+          <!-- <h1 class="text-2xl text-center font-bold my-4">Battle Menu</h1> -->
+          <!-- <battle [heroes]="addedHeroes"></battle> -->
+          <button
+            type="button"
+            class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+            (click)="startBattle()"
+          >
+            Battle
+          </button>
+        </div>
       }
     </div>
 
     @if (musicOn) {
-    <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
+      <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
     }
   `,
   styleUrls: ['./main-menu.component.scss'],
@@ -108,7 +123,7 @@ export class MainMenuComponent implements OnDestroy {
       this.addHeroToBattle(dialogEvent.hero);
     } else if (dialogEvent.action === HeroDialogAction.Remove) {
       this.addedHeroes = this.addedHeroes.filter(
-        (heroInParty) => heroInParty.heroName !== dialogEvent.hero.heroName
+        (heroInParty) => heroInParty.heroName !== dialogEvent.hero.heroName,
       );
     }
   }

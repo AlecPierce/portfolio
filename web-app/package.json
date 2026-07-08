@@ -38,6 +38,7 @@
     "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.2.4",
     "@types/jasmine": "^5.1.7",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.3.0",
     "typescript": "^5.9.2"
   }

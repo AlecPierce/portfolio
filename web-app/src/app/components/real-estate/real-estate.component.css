@@ -1,0 +1,49 @@
+.enter-animation {
+    animation: slide-fade 1s;
+}
+
+.loading-container {
+    transition: opacity 200ms ease-in;
+}
+
+.spinner {
+    height: auto;
+    width: auto;
+    animation-name: spin;
+    animation-duration: 2s; /* How long one rotation takes */
+    animation-iteration-count: infinite; /* Repeats indefinitely */
+    animation-timing-function: linear; /* Constant speed */
+}
+
+.spinner-container {
+    height: 10%;
+    width: 10%;
+}
+
+/* .leaving {
+     opacity: 0;
+     transform: translateY(20px);
+     transition: opacity 500ms ease-out, transform 500ms ease-out;
+ } */
+
+@keyframes slide-fade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

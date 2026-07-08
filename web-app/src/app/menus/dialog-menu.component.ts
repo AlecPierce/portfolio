@@ -18,7 +18,7 @@ export class DialogMenuComponent {
 
   constructor(
     public dialogRef: MatDialogRef<DialogMenuComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Hero
+    @Inject(MAT_DIALOG_DATA) public data: Hero,
   ) {}
 
   public alreadyInParty = this.data?.isInParty ? true : false;

@@ -53,7 +53,7 @@
  */
 @-webkit-keyframes tracking-in-expand-fwd {
     0% {
-        letter-spacing: -0.5em;
+        letter-spacing: 0em;
         -webkit-transform: translateZ(-700px);
         transform: translateZ(-700px);
         opacity: 0;
@@ -72,7 +72,7 @@
 
 @keyframes tracking-in-expand-fwd {
     0% {
-        letter-spacing: -0.5em;
+        letter-spacing: 0.25em;
         -webkit-transform: translateZ(-700px);
         transform: translateZ(-700px);
         opacity: 0;

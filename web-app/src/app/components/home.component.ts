@@ -17,6 +17,14 @@ import { BehaviorSubject } from 'rxjs';
             Hero Menu
           </button>
         </a>
+        <a routerLink="/sales-analysis">
+          <button
+            type="button"
+            class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+          >
+            Sales Analyzer
+          </button>
+        </a>
       </div>
       <div class="min-[920px]:justify-center min-[920px]:flex">
         <section class="text-white flex flex-col gap-4">
