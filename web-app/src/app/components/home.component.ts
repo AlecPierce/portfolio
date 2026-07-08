@@ -35,7 +35,7 @@ import { BehaviorSubject } from 'rxjs';
           </div>
           <div class="text-xl max-[920px]:size-fit">
             <p class="p-4 m-2 border border-[cornflowerblue]">
-              Software engineer with 7+ years of full stack experience primarily
+              Software engineer with 8+ years of full stack experience primarily
               in Angular and Java
             </p>
             <p class="p-4 m-2 border border-[cornflowerblue]">
