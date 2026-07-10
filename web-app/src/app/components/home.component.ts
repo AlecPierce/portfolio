@@ -88,7 +88,7 @@ import { BehaviorSubject } from 'rxjs';
                 ></i>
               </a>
             </div>
-            <div (click)="toggleResume()" class="m-2 tooltip">
+            <div (click)="toggleResume()" class="m-2 tooltip mobile-hide">
               <span class="tooltip-text">Show/Hide Resume</span>
               @if (!showResume) {
                 <i

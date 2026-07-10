@@ -1,3 +1,9 @@
+@use '@angular/material' as mat;
+
+:root {
+  // Sets the chevron icon color globally
+  --mat-expansion-header-indicator-color: #ffffff; 
+}
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;
