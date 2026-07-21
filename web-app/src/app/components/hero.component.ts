@@ -4,19 +4,38 @@ import { StatsComponent } from './stats.component';
 
 @Component({
   selector: 'hero',
-  template: ` <div
-    class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 h-auto border border-[cornflowerblue]"
-    style="cursor: pointer;"
-    (click)="heroClicked()"
-  >
-    <h2 class="text-2xl font-italic mb-4">{{ hero.heroName }}</h2>
-    <p class="mb-2">{{ description }}</p>
-    <p>Class: {{ hero.jobClass }}</p>
-    <p>Status: {{ hero.isInParty ? 'In Party' : 'Not in Party' }}</p>
-    <stats [stats]="hero.stats" [isFullStats]="false"></stats>
-  </div>`,
+  template: ` @if (!isAdded) {
+      <div
+        class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 h-auto border border-[cornflowerblue]"
+        style="cursor: pointer;"
+        (click)="heroClicked()"
+      >
+        <h2 class="text-2xl font-italic mb-4">{{ hero.heroName }}</h2>
+        <p class="mb-2">{{ description }}</p>
+        <p>Class: {{ hero.jobClass }}</p>
+        <p>Status: {{ hero.isInParty ? 'In Party' : 'Not in Party' }}</p>
+        <stats [stats]="hero.stats" [isFullStats]="false"></stats>
+      </div>
+    }
+
+    @if (isAdded) {
+      <div
+        class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 border border-[cornflowerblue] added-hero"
+        style="cursor: pointer;"
+        (click)="heroClicked()"
+      >
+        <h2 class="text-2xl font-italic mb-4">{{ hero.heroName }}</h2>
+        <p class="mb-2 description">{{ description }}</p>
+        <p>Class: {{ hero.jobClass }}</p>
+        <stats
+          [stats]="hero.stats"
+          [isFullStats]="false"
+          [justLevelAndExp]="true"
+        ></stats>
+      </div>
+    }`,
   standalone: true,
-  styleUrls: [],
+  styleUrl: 'hero.component.css',
   imports: [StatsComponent],
 })
 export class HeroComponent {
@@ -25,6 +44,9 @@ export class HeroComponent {
 
   @Input({ required: false })
   description?: string;
+
+  @Input({ required: false })
+  isAdded: boolean = false;
 
   @Output() clicked = new EventEmitter<Hero>();
 

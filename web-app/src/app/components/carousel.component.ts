@@ -6,21 +6,23 @@ import { HeroFactory } from '../data/heroes';
 
 @Component({
   selector: 'carousel',
-  template: ` <p-carousel
-    [value]="heroes"
-    [numVisible]="6"
-    [numScroll]="3"
-    [circular]="false"
-    [responsiveOptions]="responsiveOptions"
-  >
-    <ng-template let-hero #item>
-      <hero
-        [hero]="hero"
-        [description]="hero.jobClass"
-        (clicked)="heroClicked($event)"
-      ></hero>
-    </ng-template>
-  </p-carousel>`,
+  template: `
+    <p-carousel
+      [value]="heroes"
+      [numVisible]="6"
+      [numScroll]="3"
+      [circular]="false"
+      [responsiveOptions]="responsiveOptions"
+    >
+      <ng-template let-hero #item>
+        <hero
+          [hero]="hero"
+          [description]="hero.jobClass"
+          (clicked)="heroClicked($event)"
+        ></hero>
+      </ng-template>
+    </p-carousel>
+  `,
   imports: [HeroComponent, CarouselModule],
   standalone: true,
 })
@@ -30,6 +32,7 @@ export class CarouselComponent implements OnInit {
 
   @Input({ required: true })
   heroes: Hero[] = [];
+  addedHeroes: Hero[] = [];
 
   ngOnInit(): void {
     this.responsiveOptions = [

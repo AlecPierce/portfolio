@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ResumeComponent } from './resume.component';
-import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'home',
@@ -9,12 +8,12 @@ import { BehaviorSubject } from 'rxjs';
   template: `
     <div>
       <div class="md:m-2">
-        <a routerLink="/hero-menu">
+        <a routerLink="/tool-menu">
           <button
             type="button"
             class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
           >
-            Hero Menu
+            Tool Menu
           </button>
         </a>
         <a routerLink="/sales-analysis">
@@ -31,7 +30,7 @@ import { BehaviorSubject } from 'rxjs';
           <div
             class="mx-auto text-4xl font-bold tracking-in-expand-fwd md:pl-4 md:text-6xl"
           >
-            Alec Pierce's Space
+            Alec Pierce
           </div>
           <div class="text-xl max-[920px]:size-fit">
             <p class="p-4 m-2 border border-[cornflowerblue]">
@@ -39,12 +38,10 @@ import { BehaviorSubject } from 'rxjs';
               in Angular and Java
             </p>
             <p class="p-4 m-2 border border-[cornflowerblue]">
-              Experienced in developing portal applications and its reactive
-              forms, form validation, and data ingestion
+              Experience creating and maintaining websites
             </p>
             <p class="p-4 m-2 border border-[cornflowerblue]">
-              Avid fighting game player with a desire to grow and learn
-              something new every day
+              Experience creating tools for existing applications
             </p>
           </div>
           <div class="size-fit grid grid-cols-5 pl-4">

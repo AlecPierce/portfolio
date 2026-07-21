@@ -1,35 +1,43 @@
 .hero-container {
-    padding: 1rem;
-    margin: 1rem;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+.added-hero-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 4rem 4rem 4rem;
+  padding: 1rem;
+  justify-content: center;
 }
 
 .battle-container {
-    grid-template-columns: repeat(auto-fill, 200px); //grid-cols-2
-    grid-gap: 6rem;
+  grid-template-columns: repeat(auto-fill, 200px); //grid-cols-2
+  grid-gap: 6rem;
 }
 
 .battle-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .button {
-    background-color: #157570; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 1rem 1.5rem 1rem 1.5rem;
-    cursor: pointer;
+  background-color: #157570; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1rem 1.5rem 1rem 1.5rem;
+  cursor: pointer;
 }

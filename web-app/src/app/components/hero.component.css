@@ -1,0 +1,8 @@
+.description {
+  max-height: 3rem;
+  overflow: auto;
+}
+
+.added-hero {
+  margin: 0.5rem;
+}

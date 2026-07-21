@@ -10,9 +10,9 @@ export const routeConfig: Routes = [
     title: 'Alec Pierce',
   },
   {
-    path: 'hero-menu',
+    path: 'tool-menu',
     component: MainMenuComponent,
-    title: 'Hero System - Hero Menu',
+    title: 'Tool Menu',
   },
   {
     path: 'sales-analysis',
