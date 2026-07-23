@@ -11,24 +11,6 @@
   justify-content: center;
 }
 
-.battle-container {
-  grid-template-columns: repeat(auto-fill, 200px); //grid-cols-2
-  grid-gap: 6rem;
-}
-
-.battle-button {
-  background-color: #4caf50; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
 .button {
   background-color: #157570; /* Green */
   border: none;
@@ -40,4 +22,32 @@
   font-size: 16px;
   margin: 1rem 1.5rem 1rem 1.5rem;
   cursor: pointer;
+}
+
+.scratch-off {
+  position: relative;
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+
+.scratch-off-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 600px; /* Define a fixed width for the stack */
+  height: 600px; /* Define a fixed height for the stack */
+}
+
+.scratch-off-reveal {
+  grid-area: 1 / 1; /* Assign every image to row 1, column 1 */
+  width: 60%; /* Keeps images responsive */
+  height: 60%;
+  margin: auto; /* Centers the image within the grid cell */
+}
+
+.scratch-off-cover {
+  z-index: 2; /* Forces this image to stay on top */
+  grid-area: 1 / 1; /* Assign every image to row 1, column 1 */
+  width: 100%; /* Keeps images responsive */
+  height: 100%;
 }

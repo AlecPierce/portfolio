@@ -97,6 +97,21 @@ import { HeroComponent } from '../components/hero.component';
     @if (musicOn) {
       <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
     }
+
+    <div class="scratch-off">
+      <div class="scratch-off-container">
+        <img
+          src="../assets/black-square.png"
+          alt="black square to scratch off"
+          class="scratch-off-cover"
+        />
+        <img
+          src="../assets/digimon.jpg"
+          alt="Digimon movie Tai holding Egg"
+          class="scratch-off-reveal"
+        />
+      </div>
+    </div>
   `,
   styleUrls: ['./main-menu.component.scss'],
   imports: [
