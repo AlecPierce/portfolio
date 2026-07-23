@@ -32,6 +32,13 @@ import { ResumeComponent } from './resume.component';
           >
             Alec Pierce
           </div>
+          <div>
+            <img
+              src="../assets/me.jpg"
+              alt="Alec Pierce Headshot"
+              class="headshot"
+            />
+          </div>
           <div class="text-xl max-[920px]:size-fit">
             <p class="p-4 m-2 border border-[cornflowerblue]">
               Software engineer with 8+ years of full stack experience primarily
