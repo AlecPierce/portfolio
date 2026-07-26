@@ -1,0 +1,52 @@
+.scratch-off {
+  position: relative;
+  display: grid;
+  width: 100%;
+  justify-content: center;
+}
+
+.scratch-off-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 600px; /* Define a fixed width for the stack */
+  height: 600px; /* Define a fixed height for the stack */
+  cursor: none; /* Hide the cursor when hovering over the stack */
+}
+
+.scratch-off-reveal {
+  grid-area: 1 / 1; /* Assign every image to row 1, column 1 */
+  width: 60%; /* Keeps images responsive */
+  height: 60%;
+  margin: auto; /* Centers the image within the grid cell */
+}
+
+.scratch-off-cover {
+  z-index: 2; /* Forces this image to stay on top */
+  grid-area: 1 / 1; /* Assign every image to row 1, column 1 */
+  width: 100%; /* Keeps images responsive */
+  height: 100%;
+}
+
+.cursor {
+  display: none; /* Set to display in our JS */
+  pointer-events: none; /* Needed to prevent our cursor from becoming the unintended target of our mouse events */
+  position: fixed; /* Required for setting inset values */
+  height: 32px;
+  width: 32px;
+  border-radius: 32px;
+  background-color: light-dark(white, white);
+  transform: translate(-50%, -50%); /* Centers circle to cursor location */
+  transform-origin: top left;
+  z-index: 3; /* Forces this image to stay on top */
+}
+
+.scratch-off-canvas {
+  box-sizing: border-box;
+  border: 3px solid;
+  top: 0;
+  left: 0;
+  width: 60%; /* Keeps images responsive */
+  height: 60%;
+  margin: auto; /* Centers the image within the grid cell */
+  display: block;
+}

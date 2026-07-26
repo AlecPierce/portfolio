@@ -10,6 +10,7 @@ import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
 import { RouterLink } from '@angular/router';
 import { HeroComponent } from '../components/hero.component';
+import { ScratchOffComponent } from '../components/scratch-off/scratch-off.component';
 
 @Component({
   selector: 'app-main-menu',
@@ -60,6 +61,14 @@ import { HeroComponent } from '../components/hero.component';
         >
           Music Player
         </button>
+
+        <button
+          type="button"
+          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
+          (click)="scratchOffClicked()"
+        >
+          Scratch-offs
+        </button>
       </div>
 
       @if (carouselOn) {
@@ -98,20 +107,9 @@ import { HeroComponent } from '../components/hero.component';
       <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
     }
 
-    <div class="scratch-off">
-      <div class="scratch-off-container">
-        <img
-          src="../assets/black-square.png"
-          alt="black square to scratch off"
-          class="scratch-off-cover"
-        />
-        <img
-          src="../assets/digimon.jpg"
-          alt="Digimon movie Tai holding Egg"
-          class="scratch-off-reveal"
-        />
-      </div>
-    </div>
+    @if (scratchOffOn) {
+      <scratch-off></scratch-off>
+    }
   `,
   styleUrls: ['./main-menu.component.scss'],
   imports: [
@@ -120,6 +118,7 @@ import { HeroComponent } from '../components/hero.component';
     musicComponent,
     RouterLink,
     HeroComponent,
+    ScratchOffComponent,
   ],
   standalone: true,
 })
@@ -131,6 +130,7 @@ export class MainMenuComponent implements OnDestroy {
   musicOn: boolean = false;
   carouselOn: boolean = false;
   dragDropOn: boolean = false;
+  scratchOffOn: boolean = false;
   musicSrc: string = '../assets/Gundam Zeta - Kamille-Bidan.mp3';
   musicSrcTitle: string = 'Gundam Zeta - Kamille Bidan';
   heroFactory = new HeroFactory();
@@ -177,5 +177,9 @@ export class MainMenuComponent implements OnDestroy {
 
   musicClicked() {
     this.musicOn = !this.musicOn;
+  }
+
+  scratchOffClicked() {
+    this.scratchOffOn = !this.scratchOffOn;
   }
 }
