@@ -50,3 +50,16 @@
   margin: auto; /* Centers the image within the grid cell */
   display: block;
 }
+
+.mobile-show {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-hide {
+    display: none !important;
+  }
+  .mobile-show {
+    display: block !important;
+  }
+}
