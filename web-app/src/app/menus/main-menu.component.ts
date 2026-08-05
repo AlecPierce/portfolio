@@ -72,6 +72,10 @@ import { ScratchOffComponent } from '../components/scratch-off/scratch-off.compo
       </div>
 
       @if (carouselOn) {
+        <h2 class="text-xl text-center my-4">
+          Click Heroes and add or remove them from Party
+        </h2>
+        <h1 class="text-2xl text-center font-bold">Heroes</h1>
         <div class="hero-container">
           <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
           <carousel
