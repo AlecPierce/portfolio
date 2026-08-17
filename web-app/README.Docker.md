@@ -19,4 +19,10 @@ Consult Docker's [getting started](https://docs.docker.com/go/get-started-sharin
 docs for more detail on building and pushing.
 
 ### References
-* [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
+
+- [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
+
+boot up your gcloud cli
+run something like this: 'gcloud builds submit --region=us-south1 --config cloudbuild.yaml'
+
+\*make sure you have a repo made in the region in the artifact registry first before running this and that it matches whats in cloudbuild.yaml

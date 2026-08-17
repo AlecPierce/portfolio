@@ -1,7 +1,19 @@
 steps:
+  #Docker Build
   - name: "gcr.io/cloud-builders/docker"
-    script: |
-      docker build -t us-south1-docker.pkg.dev/$PROJECT_ID/docker-repo/portfolio-image:tag1 .
-    automapSubstitutions: true
+    args:
+      [
+        "build",
+        "-t",
+        "us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/portfolio-image:tag1",
+        ".",
+      ]
+  # Docker Push
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "push",
+        "us-central1-docker.pkg.dev/${PROJECT_ID}/my-docker-repo/portfolio-image:tag1",
+      ]
 images:
-  - "us-south1-docker.pkg.dev/portfolio/docker-repo/portfolio-image:tag1"
+  - "us-central1-docker.pkg.dev/$PROJECT_ID/my-docker-repo/portfolio-image:tag1"
