@@ -132,7 +132,7 @@ export class ResumeComponent implements OnInit, OnDestroy {
     try {
       const pdfjs = pdfjsLib as any;
 
-      pdfjs.GlobalWorkerOptions.workerSrc = 'assets/pdf.worker.min.mjs';
+      pdfjs.GlobalWorkerOptions.workerSrc = '../../assets/pdf.worker.min.mjs';
 
       const loadingTask = pdfjs.getDocument('../../assets/Resume.pdf'); // Path to your PDF file.
 

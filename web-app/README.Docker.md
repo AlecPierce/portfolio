@@ -23,6 +23,6 @@ docs for more detail on building and pushing.
 - [Docker's Node.js guide](https://docs.docker.com/language/nodejs/)
 
 boot up your gcloud cli
-run something like this: 'gcloud builds submit --region=us-south1 --config cloudbuild.yaml'
+run something like this: 'gcloud builds submit --region=us-central1 --config cloudbuild.yaml'
 
 \*make sure you have a repo made in the region in the artifact registry first before running this and that it matches whats in cloudbuild.yaml
