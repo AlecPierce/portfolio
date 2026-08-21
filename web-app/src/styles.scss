@@ -1,9 +1,69 @@
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 
 :root {
   // Sets the chevron icon color globally
-  --mat-expansion-header-indicator-color: #ffffff; 
+  --mat-expansion-header-indicator-color: #ffffff;
+
+  /* this has to be set to switch between light or dark */
+  color-scheme: light dark;
+
+  --light-bg: rgb(245, 249, 255);
+  --light-hover-bg: #e0e7ff; // light blue
+  --light-color: #101828;
+  --light-border: #6395ee; // cornflowerblue
+  --light-code: tomato;
+
+  --dark-bg: #101828;
+  --dark-hover-bg: #1e293b; // dark blue
+  --dark-color: rgb(245, 249, 255);
+  --dark-border: #6395ee; // cornflowerblue
+  --dark-code: gold;
 }
+
+* {
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
+  border: light-dark(var(--light-border), var(--dark-border));
+}
+
+button:hover {
+  background-color: light-dark(var(--light-hover-bg), var(--dark-hover-bg));
+}
+
+svg {
+  background: none;
+}
+
+button {
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
+  border: 0.125rem solid light-dark(var(--light-border), var(--dark-border));
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button {
+  margin: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-align: center;
+  padding: 0.625rem 1.25rem;
+}
+
+.light {
+  /* forces light color-scheme */
+  color-scheme: light;
+}
+.dark {
+  /* forces dark color-scheme */
+  color-scheme: dark;
+}
+
 /* You can add global styles to this file, and also import other style files */
 @tailwind base;
 @tailwind components;

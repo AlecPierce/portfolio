@@ -13,11 +13,7 @@ import * as pdfjsLib from 'pdfjs-dist';
   template: ` <div class="pb-8 pdf-container">
     <div>
       @if (currentPageNumber == 1) {
-        <button
-          type="button"
-          (click)="nextPage()"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-        >
+        <button type="button" (click)="nextPage()" class="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -34,12 +30,7 @@ import * as pdfjsLib from 'pdfjs-dist';
         </button>
       }
       @if (currentPageNumber == 2) {
-        <button
-          type="button"
-          (click)="nextPage()"
-          disabled
-          class="my-2 mx-2 cursor-not-allowed text-white border border-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:text-white dark:border-gray-800"
-        >
+        <button type="button" (click)="nextPage()" disabled class="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -56,11 +47,7 @@ import * as pdfjsLib from 'pdfjs-dist';
         </button>
       }
       @if (currentPageNumber == 2) {
-        <button
-          type="button"
-          (click)="prevPage()"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-        >
+        <button type="button" (click)="prevPage()" class="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -77,12 +64,7 @@ import * as pdfjsLib from 'pdfjs-dist';
         </button>
       }
       @if (currentPageNumber == 1) {
-        <button
-          type="button"
-          (click)="prevPage()"
-          disabled
-          class="my-2 mx-2 cursor-not-allowed text-white border border-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:text-white dark:border-gray-800"
-        >
+        <button type="button" (click)="prevPage()" disabled class="button">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
