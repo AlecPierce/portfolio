@@ -1,0 +1,10 @@
+.nav-bar {
+  display: flex;
+  flex-direction: row;
+}
+
+.light-dark-toggle {
+  display: flex;
+  flex: auto;
+  justify-content: flex-end;
+}

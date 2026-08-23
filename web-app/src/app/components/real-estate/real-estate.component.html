@@ -1,12 +1,5 @@
 <div>
-  <div class="md:m-2">
-    <a routerLink="/">
-      <button type="button" class="button">Home</button>
-    </a>
-    <a routerLink="/tool-menu">
-      <button type="button" class="button">Tool Menu</button>
-    </a>
-  </div>
+  <app-nav-bar [routes]="this.routes"></app-nav-bar>
   <div class="flexbox text-white">
     <h1 class="text-2xl text-center font-bold my-4">Sales Analyzer</h1>
     <h2 class="text-xl text-center my-4">Submit the form to see sample text</h2>
@@ -65,13 +58,7 @@
           </div>
 
           <div class="text-center">
-            <button
-              id="submit"
-              type="button"
-              class="button"
-            >
-              Submit
-            </button>
+            <button id="submit" type="button" class="button">Submit</button>
           </div>
         </form>
       </div>

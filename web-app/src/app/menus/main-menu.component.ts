@@ -8,21 +8,15 @@ import { HeroDialogAction } from '../enums/dialogActions.enum';
 import { CarouselComponent } from '../components/carousel.component';
 import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
-import { RouterLink } from '@angular/router';
 import { HeroComponent } from '../components/hero.component';
 import { ScratchOffComponent } from '../components/scratch-off/scratch-off.component';
+import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { navRoutes } from '../routes';
 
 @Component({
   selector: 'app-main-menu',
   template: `
-    <div class="m-2">
-      <a routerLink="/">
-        <button type="button" class="button">Home</button>
-      </a>
-      <a routerLink="/sales-analysis">
-        <button type="button" class="button">Sales Analyzer</button>
-      </a>
-    </div>
+    <app-nav-bar [routes]="routes"></app-nav-bar>
     <div class="flexbox text-white">
       <h1 class="text-2xl text-center font-bold my-4">Tool Menu</h1>
       <h2 class="text-xl text-center my-4">Click on a Tool to get started</h2>
@@ -94,9 +88,9 @@ import { ScratchOffComponent } from '../components/scratch-off/scratch-off.compo
     CarouselComponent,
     dragDropComponent,
     musicComponent,
-    RouterLink,
     HeroComponent,
     ScratchOffComponent,
+    NavBarComponent,
   ],
   standalone: true,
 })
@@ -112,6 +106,7 @@ export class MainMenuComponent implements OnDestroy {
   musicSrc: string = '../assets/Gundam Zeta - Kamille-Bidan.mp3';
   musicSrcTitle: string = 'Gundam Zeta - Kamille Bidan';
   heroFactory = new HeroFactory();
+  routes = [navRoutes.HOME, navRoutes.SALES_ANALYSIS];
 
   constructor(private dialog: MatDialog) {}
 

@@ -1,13 +1,14 @@
+import { NavRoute } from './classes/navRoute';
 import { HomeComponent } from './components/home.component';
 import { RealEstateComponent } from './components/real-estate/real-estate.component';
 import { MainMenuComponent } from './menus/main-menu.component';
-import { Routes } from '@angular/router';
+import { Routes, Route } from '@angular/router';
 
 export const routeConfig: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Alec Pierce',
+    title: 'Home',
   },
   {
     path: 'tool-menu',
@@ -24,3 +25,9 @@ export const routeConfig: Routes = [
     redirectTo: '',
   },
 ];
+
+export const navRoutes = {
+  HOME: new NavRoute('', 'Home'),
+  TOOL_MENU: new NavRoute('/tool-menu', 'Tool Menu'),
+  SALES_ANALYSIS: new NavRoute('/sales-analysis', 'Sales Analyzer'),
+};

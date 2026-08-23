@@ -9,10 +9,12 @@ import { RealEstateService } from '../../services/real-estate/real-estate.servic
 import { AnalysisComponent } from '../analysis/analysis.component';
 import { RealEstate } from '../../classes/realEstate';
 import { Observable } from 'rxjs';
-import { RouterLink } from '@angular/router';
+import { NavBarComponent } from '../../nav-bar/nav-bar.component';
+import { navRoutes } from '../../routes';
+import { NavRoute } from '../../classes/navRoute';
 @Component({
   selector: 'real-estate',
-  imports: [ReactiveFormsModule, AnalysisComponent, RouterLink],
+  imports: [ReactiveFormsModule, AnalysisComponent, NavBarComponent],
   templateUrl: './real-estate.component.html',
   styleUrl: './real-estate.component.css',
   standalone: true,
@@ -23,6 +25,7 @@ export class RealEstateComponent {
   responseText = new Observable<string>((val) => val.next(''));
   private _response = signal<string>('');
   readonly response = this._response.asReadonly();
+  routes: NavRoute[] = [navRoutes.HOME, navRoutes.TOOL_MENU];
 
   constructor(
     private fb: FormBuilder,
