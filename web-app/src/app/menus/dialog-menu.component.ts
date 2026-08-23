@@ -10,7 +10,7 @@ import { HeroDialogEvent } from '../events/heroDialogEvent';
   selector: 'app-dialog-menu',
   templateUrl: 'dialog-menu.component.html',
   imports: [StatsComponent, MatExpansionModule],
-  styleUrls: ['./dialog-menu.component.scss'],
+  styleUrls: ['./dialog-menu.component.css'],
   standalone: true,
 })
 export class DialogMenuComponent {

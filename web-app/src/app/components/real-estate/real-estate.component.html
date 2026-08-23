@@ -1,20 +1,10 @@
 <div>
   <div class="md:m-2">
     <a routerLink="/">
-      <button
-        type="button"
-        class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-      >
-        Home
-      </button>
+      <button type="button" class="button">Home</button>
     </a>
     <a routerLink="/tool-menu">
-      <button
-        type="button"
-        class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-      >
-        Tool Menu
-      </button>
+      <button type="button" class="button">Tool Menu</button>
     </a>
   </div>
   <div class="flexbox text-white">
@@ -31,7 +21,7 @@
               <input
                 id="name"
                 type="text"
-                class="m-2 border border-green-300 bg-white max-w-md text-black focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+                class="m-2 border border-green-300 bg-white max-w-md text-black"
                 [formControl]="this.getRealEstateFormNameControl()"
               />
             </div>
@@ -40,7 +30,7 @@
               <input
                 id="city"
                 type="text"
-                class="m-2 border border-green-300 bg-white max-w-md text-black focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+                class="m-2 border border-green-300 bg-white max-w-md text-black"
                 [formControl]="this.getRealEstateFormCityControl()"
               />
             </div>
@@ -49,7 +39,7 @@
               <input
                 id="name"
                 type="text"
-                class="m-2 border border-green-300 bg-white max-w-md text-black focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+                class="m-2 border border-green-300 bg-white max-w-md text-black"
                 [formControl]="this.getRealEstateFormStateControl()"
               />
             </div>
@@ -58,7 +48,7 @@
               <input
                 id="city"
                 type="text"
-                class="m-2 border border-green-300 bg-white max-w-md text-black focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+                class="m-2 border border-green-300 bg-white max-w-md text-black"
                 [formControl]="this.getRealEstateFormZipCodeControl()"
               />
             </div>
@@ -67,7 +57,7 @@
               <input
                 id="name"
                 type="text"
-                class="m-2 border border-green-300 bg-white max-w-md text-black focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+                class="m-2 border border-green-300 bg-white max-w-md text-black"
                 [formControl]="this.getRealEstateFormAddressControl()"
               />
             </div>
@@ -78,7 +68,7 @@
             <button
               id="submit"
               type="button"
-              class="font-medium rounded-lg text-sm px-5 py-2.5 text-center border border-green-300 focus:ring-4 focus:outline-none focus:ring-white-300 hover:text-white border-[cornflowerblue] hover:bg-gray-700"
+              class="button"
             >
               Submit
             </button>

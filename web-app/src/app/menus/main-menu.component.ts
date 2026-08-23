@@ -17,20 +17,10 @@ import { ScratchOffComponent } from '../components/scratch-off/scratch-off.compo
   template: `
     <div class="m-2">
       <a routerLink="/">
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-        >
-          Home
-        </button>
+        <button type="button" class="button">Home</button>
       </a>
       <a routerLink="/sales-analysis">
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-        >
-          Sales Analyzer
-        </button>
+        <button type="button" class="button">Sales Analyzer</button>
       </a>
     </div>
     <div class="flexbox text-white">
@@ -38,35 +28,19 @@ import { ScratchOffComponent } from '../components/scratch-off/scratch-off.compo
       <h2 class="text-xl text-center my-4">Click on a Tool to get started</h2>
 
       <div class="flex flex-wrap justify-center gap-4">
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-          (click)="carouselClicked()"
-        >
+        <button type="button" class="button" (click)="carouselClicked()">
           Carousel with Dialog
         </button>
 
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-          (click)="dragDropClicked()"
-        >
+        <button type="button" class="button" (click)="dragDropClicked()">
           Drag and Drop
         </button>
 
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-          (click)="musicClicked()"
-        >
+        <button type="button" class="button" (click)="musicClicked()">
           Music Player
         </button>
 
-        <button
-          type="button"
-          class="my-2 mx-2 text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 border hover:text-white border-[cornflowerblue] hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-white-300 dark:border-[cornflowerblue] dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-white-800"
-          (click)="scratchOffClicked()"
-        >
+        <button type="button" class="button" (click)="scratchOffClicked()">
           Scratch-offs
         </button>
       </div>
@@ -115,7 +89,7 @@ import { ScratchOffComponent } from '../components/scratch-off/scratch-off.compo
       <scratch-off></scratch-off>
     }
   `,
-  styleUrls: ['./main-menu.component.scss'],
+  styleUrls: ['./main-menu.component.css'],
   imports: [
     CarouselComponent,
     dragDropComponent,

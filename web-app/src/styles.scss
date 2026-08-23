@@ -11,12 +11,14 @@
   --light-hover-bg: #e0e7ff; // light blue
   --light-color: #101828;
   --light-border: #6395ee; // cornflowerblue
+  --light-border-hover: #1e293b; // dark blue
   --light-code: tomato;
 
   --dark-bg: #101828;
   --dark-hover-bg: #1e293b; // dark blue
   --dark-color: rgb(245, 249, 255);
   --dark-border: #6395ee; // cornflowerblue
+  --dark-border-hover: snow; // darker cornflowerblue
   --dark-code: gold;
 }
 
@@ -24,6 +26,7 @@
   background-color: light-dark(var(--light-bg), var(--dark-bg));
   color: light-dark(var(--light-color), var(--dark-color));
   border: light-dark(var(--light-border), var(--dark-border));
+  fill: light-dark(var(--light-color), var(--dark-color));
 }
 
 button:hover {

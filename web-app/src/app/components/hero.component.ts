@@ -6,7 +6,7 @@ import { StatsComponent } from './stats.component';
   selector: 'hero',
   template: ` @if (!isAdded) {
       <div
-        class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 h-auto border border-[cornflowerblue]"
+        class="ml-6 p-4 rounded-lg shadow-lg w-64 h-auto hero-card"
         style="cursor: pointer;"
         (click)="heroClicked()"
       >
@@ -20,7 +20,7 @@ import { StatsComponent } from './stats.component';
 
     @if (isAdded) {
       <div
-        class="hover:bg-gray-800 bg-gray-900 ml-6 p-4 rounded-lg shadow-lg w-64 border border-[cornflowerblue] added-hero"
+        class="ml-6 p-4 rounded-lg shadow-lg w-64 hero-card added-hero"
         style="cursor: pointer;"
         (click)="heroClicked()"
       >

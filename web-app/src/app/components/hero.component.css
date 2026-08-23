@@ -4,5 +4,15 @@
 }
 
 .added-hero {
-  margin: 0.5rem;
+  margin: 1.5rem;
+}
+
+.hero-card {
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  color: light-dark(var(--light-text), var(--dark-text));
+}
+
+.hero-card:hover {
+  border-color: light-dark(var(--light-border-hover), var(--dark-border-hover));
 }
