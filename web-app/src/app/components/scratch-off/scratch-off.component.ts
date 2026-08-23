@@ -37,8 +37,9 @@ export class ScratchOffComponent implements AfterViewInit {
     scratchOffReveal: HTMLElement | null,
   ) {
     if (cursor && scratchOffContainer && scratchOffCover && scratchOffReveal) {
-      cursor.style.display = 'block'; // Ensure the cursor is visible
       scratchOffContainer.addEventListener('mouseenter', (e) => {
+        cursor.style.display = 'block'; // Ensure the cursor is visible
+
         scratchOffContainer.addEventListener('mousemove', (e) => {
           let x = e.clientX;
           let y = e.clientY;
@@ -87,6 +88,16 @@ export class ScratchOffComponent implements AfterViewInit {
             }
           });
         });
+      });
+      scratchOffContainer.addEventListener('mouseleave', (e) => {
+        scratchOffCover.forEach((cover) => {
+          cover.style.setProperty(
+            'clip-path',
+            'circle(0px at var(--x) var(--y))',
+          );
+          cover.style.setProperty('transition', 'clip-path 2s ease-out');
+        });
+        cursor.style.display = 'none'; // Hide the cursor when leaving the container
       });
     }
   }

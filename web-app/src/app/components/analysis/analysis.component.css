@@ -1,8 +1,14 @@
 .analysis-section-title {
-    font-size: large;
-    font-weight: bold;
+  font-size: large;
+  font-weight: bold;
 }
 
 .analysis-section-text {
-    font-size: medium;
+  font-size: medium;
+}
+
+.analysis-section-container {
+  border: 0.125rem solid light-dark(var(--light-border), #81c784);
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-color), var(--dark-color));
 }

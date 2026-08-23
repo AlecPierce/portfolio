@@ -1,22 +1,22 @@
 import { Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NavRoute } from '../classes/navRoute';
+import { NavRoute } from '../../classes/navRoute';
 
 @Component({
   selector: 'app-nav-bar',
   imports: [RouterLink],
   template: ` <div class="nav-bar">
-      <a routerLink="{{ routes[0].path }}">
-        <button type="button" class="button">
-          {{ routes[0].title }}
-        </button>
-      </a>
-      <a routerLink="{{ routes[1].path }}">
-        <button type="button" class="button">
-          {{ routes[1].title }}
-        </button>
-      </a>
-      <span class="light-dark-toggle">
+    <a routerLink="{{ routes[0].path }}">
+      <button type="button" class="button">
+        {{ routes[0].title }}
+      </button>
+    </a>
+    <a routerLink="{{ routes[1].path }}">
+      <button type="button" class="button">
+        {{ routes[1].title }}
+      </button>
+    </a>
+    <span class="light-dark-toggle">
       <button type="button" class="button" (click)="toggleColorScheme()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +31,7 @@ import { NavRoute } from '../classes/navRoute';
           />
         </svg>
       </button>
-      </span>
+    </span>
   </div>`,
   styleUrl: 'nav-bar.component.css',
 })

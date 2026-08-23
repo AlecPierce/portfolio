@@ -10,7 +10,7 @@ import { dragDropComponent } from '../components/dragDrop.component';
 import { musicComponent } from '../components/music.component';
 import { HeroComponent } from '../components/hero.component';
 import { ScratchOffComponent } from '../components/scratch-off/scratch-off.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { NavBarComponent } from '../components/nav-bar/nav-bar.component';
 import { navRoutes } from '../routes';
 
 @Component({
@@ -80,7 +80,7 @@ import { navRoutes } from '../routes';
     }
 
     @if (scratchOffOn) {
-      <scratch-off></scratch-off>
+      <scratch-off class="scratch-off-component"></scratch-off>
     }
   `,
   styleUrls: ['./main-menu.component.css'],

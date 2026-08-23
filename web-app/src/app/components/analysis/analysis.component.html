@@ -1,30 +1,28 @@
 @if (responseText && responseText.length > 0 && result.length > 0) {
-  <div
-    class="border border-black dark:border-green-300 m-2 bg-white dark:bg-gray-900"
-  >
+  <div class="m-2 analysis-section-container">
     <div class="inline-flex flex-col items-baseline p-2">
-      <p class="analysis-section-title text-gray-900 dark:text-white">
+      <p class="analysis-section-title">
         {{ result[0] }}
       </p>
       <p
-        class="analysis-section-text text-left text-gray-500 dark:text-gray-400"
+        class="analysis-section-text text-left"
       >
         {{ result[1] }}
       </p>
-      <p class="analysis-section-title text-gray-900 dark:text-white">
+      <p class="analysis-section-title">
         {{ result[2] }}
       </p>
       @if (checkForDelimiter("", "")) {
         @for (item of getSplicedExplanation(); track item) {
           <p
-            class="analysis-section-text text-left text-gray-500 dark:text-gray-400"
+            class="analysis-section-text text-left"
           >
             {{ "- " + item }}
           </p>
         }
       } @else if (!checkForDelimiter("", "")) {
         <p
-          class="analysis-section-text text-left text-gray-500 dark:text-gray-400"
+          class="analysis-section-text text-left"
         >
           {{ result[3] }}
         </p>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ResumeComponent } from './resume.component';
-import { NavBarComponent } from '../nav-bar/nav-bar.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { navRoutes } from '../routes';
 import { NavRoute } from '../classes/navRoute';
 

@@ -1,49 +1,58 @@
 .enter-animation {
-    animation: slide-fade 1s;
+  animation: slide-fade 1s;
 }
 
 .loading-container {
-    transition: opacity 200ms ease-in;
+  transition: opacity 200ms ease-in;
+}
+
+.spinner-text {
+  font-size: larger;
 }
 
 .spinner {
-    height: auto;
-    width: auto;
-    animation-name: spin;
-    animation-duration: 2s; /* How long one rotation takes */
-    animation-iteration-count: infinite; /* Repeats indefinitely */
-    animation-timing-function: linear; /* Constant speed */
+  height: auto;
+  width: auto;
+  animation-name: spin;
+  animation-duration: 2s; /* How long one rotation takes */
+  animation-iteration-count: infinite; /* Repeats indefinitely */
+  animation-timing-function: linear; /* Constant speed */
+  width: 4.5rem;
+  background: none;
 }
 
 .spinner-container {
-    height: 10%;
-    width: 10%;
+  height: 20%;
+  width: 20%;
 }
 
-/* .leaving {
-     opacity: 0;
-     transform: translateY(20px);
-     transition: opacity 500ms ease-out, transform 500ms ease-out;
- } */
+.form-container {
+  border: 0.125rem solid light-dark(var(--light-border), #81c784);
+  border-radius: 0.5rem;
+}
+
+.input-container {
+  border: 0.125rem solid light-dark(var(--light-border), #81c784);
+}
 
 @keyframes slide-fade {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
+  from {
+    transform: rotate(0deg);
+  }
 
-    to {
-        transform: rotate(360deg);
-    }
+  to {
+    transform: rotate(360deg);
+  }
 }
