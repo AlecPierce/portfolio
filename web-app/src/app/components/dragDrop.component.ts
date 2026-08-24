@@ -21,7 +21,7 @@ import { HeroFactory } from '../data/heroes';
         <div
           cdkDropList
           [cdkDropListData]="heroNames"
-          class="drag-drop-list drag-drop-list-top"
+          class="drag-drop-list"
           cdkDropListOrientation="mixed"
           (cdkDropListDropped)="drop($event)"
           cdkScrollable
@@ -38,7 +38,7 @@ import { HeroFactory } from '../data/heroes';
         <div
           cdkDropList
           [cdkDropListData]="party"
-          class="drag-drop-list drag-drop-list-bottom"
+          class="drag-drop-list"
           cdkDropListOrientation="mixed"
           (cdkDropListDropped)="drop($event)"
           cdkScrollable

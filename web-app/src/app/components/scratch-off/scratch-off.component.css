@@ -11,6 +11,7 @@
   width: 600px; /* Define a fixed width for the stack */
   height: 600px; /* Define a fixed height for the stack */
   cursor: none; /* Hide the cursor when hovering over the stack */
+  border: 0.125rem solid light-dark(var(--light-border), var(--dark-border));
 }
 
 .scratch-off-reveal {

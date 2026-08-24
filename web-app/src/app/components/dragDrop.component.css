@@ -2,39 +2,36 @@
   width: 25rem;
   max-width: 100%;
   margin: 0 1.5rem 1.5rem 0;
-  /* display: inline-block; */
   vertical-align: top;
   padding-left: 2%;
   padding-bottom: 2%;
 }
 
 .drag-drop-list {
-  /* border: solid 0.063rem #ccc;
-  min-height: 4rem;
-  max-height: 18rem;
-  background: white;
-  border-radius: 0.25rem;
+  display: flex;
+  flex-wrap: row;
+  max-width: max-content;
+  width: fit-content;
+  min-width: 25%;
+  border-radius: 4px;
+  min-height: 60px;
   overflow: hidden;
-  display: block;
-  overflow-y: auto; */
-
-    display: flex;  flex-wrap: row;  max-width: max-content; width: fit-content; min-width: 25%; border-radius: 4px; min-height: 60px;   overflow: hidden;
-      
-    /* gap: 2rem;    max-width: 100%; padding: 15px; border: solid 1px #ccc;  */
 }
 
-.drag-drop-list-top {
-border: solid #ccc 2px;
+.drag-drop-list {
+  border: 0.125rem solid light-dark(var(--light-border), var(--dark-border));
 }
 
-.drag-drop-list-bottom {
-border: dotted #ccc 2px;
+.drag-drop-list:empty {
+  border: 0.125rem dotted light-dark(var(--light-border), var(--dark-border));
 }
 
 .drag-drop-box {
+  border: solid 0.063rem light-dark(var(--light-border), var(--dark-border));
+  color: light-dark(var(--light-color), var(--dark-color));
+  background: light-dark(var(--light-bg), var(--dark-bg));
+
   padding: 1rem 2rem 1rem 2rem;
-  border-bottom: solid 0.063rem #ccc;
-  color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -42,7 +39,6 @@ border: dotted #ccc 2px;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
-  background: white;
   font-size: 1rem;
   width: 100%;
 }
@@ -50,9 +46,10 @@ border: dotted #ccc 2px;
 .cdk-drag-preview {
   box-sizing: border-box;
   border-radius: 0.25rem;
-  box-shadow: 0 0.313rem 0.313rem -0.188rem rgba(0, 0, 0, 0.2),
-              0 0.5rem 0.625rem 0.063rem rgba(0, 0, 0, 0.14),
-              0 0.188rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 0.313rem 0.313rem -0.188rem rgba(0, 0, 0, 0.2),
+    0 0.5rem 0.625rem 0.063rem rgba(0, 0, 0, 0.14),
+    0 0.188rem 0.875rem 0.125rem rgba(0, 0, 0, 0.12);
 }
 
 .cdk-drag-placeholder {
@@ -63,10 +60,7 @@ border: dotted #ccc 2px;
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.drag-drop-box:last-child {
-  border: none;
-}
-
-.drag-drop-list.cdk-drop-list-dragging .drag-drop-box:not(.cdk-drag-placeholder) {
+.drag-drop-list.cdk-drop-list-dragging
+  .drag-drop-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
