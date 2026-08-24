@@ -59,6 +59,7 @@ import { navRoutes } from '../routes';
                 [hero]="hero"
                 [description]="hero.description"
                 [isAdded]="true"
+                (clicked)="heroClicked($event)"
               ></hero>
             }
           </div>

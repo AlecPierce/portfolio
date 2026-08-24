@@ -22,13 +22,12 @@ import { HeroFactory } from '../data/heroes';
           cdkDropList
           [cdkDropListData]="heroNames"
           class="drag-drop-list drag-drop-list-top"
-          cdkDropListSortingDisabled
           cdkDropListOrientation="mixed"
           (cdkDropListDropped)="drop($event)"
           cdkScrollable
         >
           @for (hero of heroNames; track hero) {
-          <div class="drag-drop-box" cdkDrag>{{ hero }}</div>
+            <div class="drag-drop-box" cdkDrag>{{ hero }}</div>
           }
         </div>
       </div>
@@ -40,11 +39,12 @@ import { HeroFactory } from '../data/heroes';
           cdkDropList
           [cdkDropListData]="party"
           class="drag-drop-list drag-drop-list-bottom"
+          cdkDropListOrientation="mixed"
           (cdkDropListDropped)="drop($event)"
           cdkScrollable
         >
           @for (member of party; track member) {
-          <div class="drag-drop-box" cdkDrag>{{ member }}</div>
+            <div class="drag-drop-box" cdkDrag>{{ member }}</div>
           }
         </div>
       </div>
@@ -80,14 +80,14 @@ export class dragDropComponent implements OnInit {
       moveItemInArray(
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
     } else {
       transferArrayItem(
         event.previousContainer.data,
         event.container.data,
         event.previousIndex,
-        event.currentIndex
+        event.currentIndex,
       );
     }
   }

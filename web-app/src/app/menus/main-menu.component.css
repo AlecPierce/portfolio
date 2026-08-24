@@ -7,7 +7,6 @@
 .added-hero-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 4rem 4rem 4rem;
   padding: 1rem;
   justify-content: center;
 }
@@ -15,7 +14,6 @@
 .drag-drop-container {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 4rem 4rem 4rem;
   padding: 1rem;
   justify-content: center;
 }
