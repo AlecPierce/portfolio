@@ -13,6 +13,7 @@ import { HeroFactory } from '../data/heroes';
       [numScroll]="3"
       [circular]="false"
       [responsiveOptions]="responsiveOptions"
+      id="p-carousel"
     >
       <ng-template let-hero #item>
         <hero
@@ -60,11 +61,57 @@ export class CarouselComponent implements OnInit {
     if (this.heroes == undefined || this.heroes.length == 0) {
       this.heroes = this.heroFactory.createHeroList();
     }
+
+    this.createSwipeListener();
   }
 
   @Output() clicked = new EventEmitter<Hero>();
 
   heroClicked(hero: Hero) {
     this.clicked.emit(hero);
+  }
+
+  createSwipeListener() {
+    const element = document.getElementById('p-carousel')!;
+
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    // Minimum swipe distance in pixels to trigger the action
+    const swipeThreshold = 50;
+
+    element.addEventListener(
+      'touchstart',
+      (e) => {
+        // Record the starting vertical position
+        touchStartY = e.changedTouches[0].screenY;
+      },
+      { passive: true },
+    );
+
+    element.addEventListener(
+      'touchend',
+      (e) => {
+        // Record the ending vertical position
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipe();
+      },
+      { passive: true },
+    );
+
+    function handleSwipe() {
+      const distanceY = touchEndY - touchStartY;
+
+      // Check if the gesture moved far enough
+      if (Math.abs(distanceY) > swipeThreshold) {
+        if (distanceY < 0) {
+          // swiped up
+          window.scrollBy({ top: 500, behavior: 'smooth' });
+        } else {
+          // swiped down
+          window.scrollTo({ top: 100, behavior: 'smooth' });
+        }
+      }
+    }
   }
 }
