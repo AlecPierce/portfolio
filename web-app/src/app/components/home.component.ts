@@ -114,5 +114,11 @@ export class HomeComponent {
 
   toggleResume() {
     this.showResume = !this.showResume;
+    if (this.showResume) {
+      setTimeout(() => {
+        const resumeElement = document.getElementById('resume-container');
+        resumeElement?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
   }
 }

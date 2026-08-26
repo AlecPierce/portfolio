@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'music',
   template: `
-    <div class="grid justify-items-center">
+    <div class="grid justify-items-center" id="music-container">
       <div class="music-src-title px-2">
         {{ musicSrcTitle }}
       </div>

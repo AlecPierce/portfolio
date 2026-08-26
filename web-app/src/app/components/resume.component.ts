@@ -10,7 +10,7 @@ import * as pdfjsLib from 'pdfjs-dist';
 @Component({
   selector: 'resume',
   imports: [],
-  template: ` <div class="pb-8 pdf-container">
+  template: ` <div class="pb-8 pdf-container" id="resume-container">
     <div>
       @if (currentPageNumber == 1) {
         <button type="button" (click)="nextPage()" class="button">

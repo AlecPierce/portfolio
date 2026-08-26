@@ -14,7 +14,7 @@ import { HeroFactory } from '../data/heroes';
 @Component({
   selector: 'dragdrop',
   template: `
-    <div cdkDropListGroup>
+    <div cdkDropListGroup id="drag-drop-container">
       <div class="drag-drop-container text-white">
         <h2>Available Heroes</h2>
 

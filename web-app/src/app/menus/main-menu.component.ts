@@ -53,7 +53,7 @@ import { navRoutes } from '../routes';
         </div>
         @if (addedHeroes.length > 0) {
           <h1 class="text-2xl text-center font-bold">Party</h1>
-          <div class="added-hero-container">
+          <div class="added-hero-container" id="added-hero-container">
             @for (hero of addedHeroes; track hero) {
               <hero
                 [hero]="hero"
@@ -122,6 +122,18 @@ export class MainMenuComponent implements OnDestroy {
     });
     dialogRef.afterClosed().subscribe((dialogEvent: HeroDialogEvent) => {
       this.heroDialogClosed(dialogEvent);
+
+      if (this.addedHeroes.length > 0) {
+          setTimeout(() => {
+            const addedHeroContainer = document.getElementById(
+              'added-hero-container',
+            );
+            addedHeroContainer?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'end',
+            });
+          }, 100);
+      }
     });
   }
 
@@ -143,17 +155,43 @@ export class MainMenuComponent implements OnDestroy {
 
   carouselClicked() {
     this.carouselOn = !this.carouselOn;
+    if (this.carouselOn) {
+      setTimeout(() => {
+        const carouselElement = document.getElementById('p-carousel');
+        carouselElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
   }
 
   dragDropClicked() {
     this.dragDropOn = !this.dragDropOn;
+    if (this.dragDropOn) {
+      setTimeout(() => {
+        const dragDropElement = document.getElementById('drag-drop-container');
+        dragDropElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
   }
 
   musicClicked() {
     this.musicOn = !this.musicOn;
+    if (this.musicOn) {
+      setTimeout(() => {
+        const musicElement = document.getElementById('music-container');
+        musicElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
   }
 
   scratchOffClicked() {
     this.scratchOffOn = !this.scratchOffOn;
+    if (this.scratchOffOn) {
+      setTimeout(() => {
+        const scratchOffElement = document.getElementById(
+          'scratch-off-container',
+        );
+        scratchOffElement?.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 100);
+    }
   }
 }
