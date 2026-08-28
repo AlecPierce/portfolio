@@ -5,7 +5,7 @@ import { NavRoute } from '../../classes/navRoute';
 @Component({
   selector: 'app-nav-bar',
   imports: [RouterLink],
-  template: ` <div class="nav-bar">
+  template: `<div class="nav-bar-component">
     <a routerLink="{{ routes[0].path }}">
       <button type="button" class="button">
         {{ routes[0].title }}

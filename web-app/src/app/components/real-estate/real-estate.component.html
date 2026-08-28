@@ -1,87 +1,91 @@
-<div>
-  <app-nav-bar [routes]="this.routes"></app-nav-bar>
-  <div class="flexbox">
-    <h1 class="text-2xl text-center font-bold my-4">Sales Analyzer</h1>
-    <h2 class="text-xl text-center my-4">Submit the form to see sample text</h2>
-    <div class="mx-auto max-w-md">
-      <div class="text-justify">
-        <form class="border m-2 p-2 form-container">
-          <div>
-            <div class="flex justify-between">
-              <label for="name">Name: </label>
-              <input
-                id="name"
-                type="text"
-                class="m-2 border max-w-md input-container"
-                [formControl]="this.getRealEstateFormNameControl()"
-              />
+<div class="re-container">
+  <div class="re-container-content">
+    <app-nav-bar [routes]="this.routes"></app-nav-bar>
+    <div class="flexbox re-content-section">
+      <h1 class="text-2xl text-center font-bold my-4">Sales Analyzer</h1>
+      <h2 class="text-xl text-center my-4">
+        Submit the form to see sample text
+      </h2>
+      <div class="mx-auto max-w-md">
+        <div class="text-justify">
+          <form class="border p-2 form-container">
+            <div>
+              <div class="flex justify-between">
+                <label for="name">Name: </label>
+                <input
+                  id="name"
+                  type="text"
+                  class="m-2 border max-w-md input-container"
+                  [formControl]="this.getRealEstateFormNameControl()"
+                />
+              </div>
+              <div class="flex justify-between">
+                <label for="city">City: </label>
+                <input
+                  id="city"
+                  type="text"
+                  class="m-2 border max-w-md input-container"
+                  [formControl]="this.getRealEstateFormCityControl()"
+                />
+              </div>
+              <div class="flex justify-between">
+                <label for="name">State: </label>
+                <input
+                  id="name"
+                  type="text"
+                  class="m-2 border max-w-md input-container"
+                  [formControl]="this.getRealEstateFormStateControl()"
+                />
+              </div>
+              <div class="flex justify-between">
+                <label for="city">Zip Code: </label>
+                <input
+                  id="city"
+                  type="text"
+                  class="m-2 border max-w-md input-container"
+                  [formControl]="this.getRealEstateFormZipCodeControl()"
+                />
+              </div>
+              <div class="flex justify-between">
+                <label for="name">Address:* </label>
+                <input
+                  id="name"
+                  type="text"
+                  class="m-2 border max-w-md input-container"
+                  [formControl]="this.getRealEstateFormAddressControl()"
+                />
+              </div>
+              <div>(* is optional)</div>
             </div>
-            <div class="flex justify-between">
-              <label for="city">City: </label>
-              <input
-                id="city"
-                type="text"
-                class="m-2 border max-w-md input-container"
-                [formControl]="this.getRealEstateFormCityControl()"
-              />
-            </div>
-            <div class="flex justify-between">
-              <label for="name">State: </label>
-              <input
-                id="name"
-                type="text"
-                class="m-2 border max-w-md input-container"
-                [formControl]="this.getRealEstateFormStateControl()"
-              />
-            </div>
-            <div class="flex justify-between">
-              <label for="city">Zip Code: </label>
-              <input
-                id="city"
-                type="text"
-                class="m-2 border max-w-md input-container"
-                [formControl]="this.getRealEstateFormZipCodeControl()"
-              />
-            </div>
-            <div class="flex justify-between">
-              <label for="name">Address:* </label>
-              <input
-                id="name"
-                type="text"
-                class="m-2 border max-w-md input-container"
-                [formControl]="this.getRealEstateFormAddressControl()"
-              />
-            </div>
-            <div>(* is optional)</div>
-          </div>
 
-          <div class="text-center">
-            <button id="submit" type="button" class="button">Submit</button>
-          </div>
-        </form>
-      </div>
-      @if (isShown()) {
-        <div
-          class="loading-container flex justify-center"
-          animate.enter="enter-animation"
-        >
-          <p class="spinner-text">
-            Analyzing the sales of
-            {{ this.getRealEstateFormNameControlValue() }} in
-            {{ this.getRealEstateFormCityControlValue() }}...
-          </p>
-          <div class="spinner-container">
-            <img
-              class="spinner"
-              src="../../../assets/cheesecake-with-slice-with-background.png"
-              alt="cheesewheel spinning"
-            />
-          </div>
+            <div class="text-center">
+              <button id="submit" type="button" class="button">Submit</button>
+            </div>
+          </form>
         </div>
-      }
-      @if (!isShown()) {
-        <analysis [responseText]="response()"></analysis>
-      }
+        @if (isShown()) {
+          <div
+            class="loading-container flex justify-center"
+            animate.enter="enter-animation"
+          >
+            <p class="spinner-text">
+              Analyzing the sales of
+              {{ this.getRealEstateFormNameControlValue() }} in
+              {{ this.getRealEstateFormCityControlValue() }}...
+            </p>
+            <div class="spinner-container">
+              <img
+                class="spinner"
+                src="../../../assets/cheesecake-with-slice-with-background.png"
+                alt="cheesewheel spinning"
+              />
+            </div>
+          </div>
+        }
+        @if (!isShown()) {
+          <analysis [responseText]="response()"></analysis>
+        }
+      </div>
     </div>
   </div>
 </div>

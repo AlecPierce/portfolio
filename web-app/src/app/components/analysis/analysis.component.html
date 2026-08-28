@@ -4,9 +4,7 @@
       <p class="analysis-section-title">
         {{ result[0] }}
       </p>
-      <p
-        class="analysis-section-text text-left"
-      >
+      <p class="analysis-section-text text-left">
         {{ result[1] }}
       </p>
       <p class="analysis-section-title">
@@ -14,16 +12,12 @@
       </p>
       @if (checkForDelimiter("", "")) {
         @for (item of getSplicedExplanation(); track item) {
-          <p
-            class="analysis-section-text text-left"
-          >
+          <p class="analysis-section-text text-left">
             {{ "- " + item }}
           </p>
         }
       } @else if (!checkForDelimiter("", "")) {
-        <p
-          class="analysis-section-text text-left"
-        >
+        <p class="analysis-section-text text-left">
           {{ result[3] }}
         </p>
       }

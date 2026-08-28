@@ -1,6 +1,21 @@
-.nav-bar {
+.nav-bar-component {
   display: flex;
   flex-direction: row;
+  background-color: transparent;
+
+  a,
+  span {
+    background: none;
+  }
+
+  button {
+    background-color: light-dark(var(--light-bg), var(--dark-bg));
+  }
+
+  button:hover {
+    background-color: light-dark(var(--light-hover-bg), var(--dark-hover-bg));
+    opacity: 80%;
+  }
 }
 
 .light-dark-toggle {

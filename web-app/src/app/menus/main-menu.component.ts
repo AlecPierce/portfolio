@@ -16,73 +16,79 @@ import { navRoutes } from '../routes';
 @Component({
   selector: 'app-main-menu',
   template: `
-    <app-nav-bar [routes]="routes"></app-nav-bar>
-    <div class="flexbox text-white">
-      <h1 class="text-2xl text-center font-bold my-4">Tool Menu</h1>
-      <h2 class="text-xl text-center my-4">Click on a Tool to get started</h2>
+    <div class="main-container">
+      <div class="main-container-content">
+        <app-nav-bar [routes]="routes"></app-nav-bar>
+        <div class="flexbox text-white main-content-section">
+          <h1 class="text-2xl text-center font-bold my-4">Tool Menu</h1>
+          <h2 class="text-xl text-center my-4">
+            Click on a Tool to get started
+          </h2>
 
-      <div class="flex flex-wrap justify-center gap-4">
-        <button type="button" class="button" (click)="carouselClicked()">
-          Carousel with Dialog
-        </button>
+          <div class="flex flex-wrap justify-center gap-4">
+            <button type="button" class="button" (click)="carouselClicked()">
+              Carousel with Dialog
+            </button>
 
-        <button type="button" class="button" (click)="dragDropClicked()">
-          Drag and Drop
-        </button>
+            <button type="button" class="button" (click)="dragDropClicked()">
+              Drag and Drop
+            </button>
 
-        <button type="button" class="button" (click)="musicClicked()">
-          Music Player
-        </button>
+            <button type="button" class="button" (click)="musicClicked()">
+              Music Player
+            </button>
 
-        <button type="button" class="button" (click)="scratchOffClicked()">
-          Scratch-offs
-        </button>
-      </div>
-
-      @if (carouselOn) {
-        <h2 class="text-xl text-center my-4">
-          Click Heroes and add or remove them from Party
-        </h2>
-        <h1 class="text-2xl text-center font-bold">Heroes</h1>
-        <div class="hero-container">
-          <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
-          <carousel
-            (clicked)="heroClicked($event)"
-            [heroes]="heroes"
-          ></carousel>
-        </div>
-        @if (addedHeroes.length > 0) {
-          <h1 class="text-2xl text-center font-bold">Party</h1>
-          <div class="added-hero-container" id="added-hero-container">
-            @for (hero of addedHeroes; track hero) {
-              <hero
-                [hero]="hero"
-                [description]="hero.description"
-                [isAdded]="true"
-                (clicked)="heroClicked($event)"
-              ></hero>
-            }
+            <button type="button" class="button" (click)="scratchOffClicked()">
+              Scratch-offs
+            </button>
           </div>
-        }
-      }
 
-      @if (dragDropOn) {
-        <h2 class="text-xl text-center my-4">
-          Drag Available Heroes over to Party to get started
-        </h2>
-        <div class="drag-drop-container">
-          <dragdrop [heroes]="heroes"></dragdrop>
+          @if (carouselOn) {
+            <h2 class="text-xl text-center my-4">
+              Click Heroes and add or remove them from Party
+            </h2>
+            <h1 class="text-2xl text-center font-bold">Heroes</h1>
+            <div class="hero-container">
+              <!-- BUG: hero is in party still after traversing to home and back to hero menu but "Battle" button doesnt show -->
+              <carousel
+                (clicked)="heroClicked($event)"
+                [heroes]="heroes"
+              ></carousel>
+            </div>
+            @if (addedHeroes.length > 0) {
+              <h1 class="text-2xl text-center font-bold">Party</h1>
+              <div class="added-hero-container" id="added-hero-container">
+                @for (hero of addedHeroes; track hero) {
+                  <hero
+                    [hero]="hero"
+                    [description]="hero.description"
+                    [isAdded]="true"
+                    (clicked)="heroClicked($event)"
+                  ></hero>
+                }
+              </div>
+            }
+          }
+
+          @if (dragDropOn) {
+            <h2 class="text-xl text-center my-4">
+              Drag Available Heroes over to Party to get started
+            </h2>
+            <div class="drag-drop-container">
+              <dragdrop [heroes]="heroes"></dragdrop>
+            </div>
+          }
         </div>
-      }
+
+        @if (musicOn) {
+          <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
+        }
+
+        @if (scratchOffOn) {
+          <scratch-off class="scratch-off-component"></scratch-off>
+        }
+      </div>
     </div>
-
-    @if (musicOn) {
-      <music [musicSrc]="musicSrc" [musicSrcTitle]="musicSrcTitle"></music>
-    }
-
-    @if (scratchOffOn) {
-      <scratch-off class="scratch-off-component"></scratch-off>
-    }
   `,
   styleUrls: ['./main-menu.component.css'],
   imports: [
@@ -124,15 +130,15 @@ export class MainMenuComponent implements OnDestroy {
       this.heroDialogClosed(dialogEvent);
 
       if (this.addedHeroes.length > 0) {
-          setTimeout(() => {
-            const addedHeroContainer = document.getElementById(
-              'added-hero-container',
-            );
-            addedHeroContainer?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'end',
-            });
-          }, 100);
+        setTimeout(() => {
+          const addedHeroContainer = document.getElementById(
+            'added-hero-container',
+          );
+          addedHeroContainer?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'end',
+          });
+        }, 100);
       }
     });
   }
