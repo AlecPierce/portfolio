@@ -49,7 +49,8 @@
   height: 100%;
   background-image: url(../../../assets/background.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: bottom;
+  background-attachment: fixed;
   opacity: 0.8;
   z-index: 1;
 }
