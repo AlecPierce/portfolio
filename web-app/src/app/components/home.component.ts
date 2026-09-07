@@ -61,12 +61,22 @@ import { NavRoute } from '../classes/navRoute';
                 </a>
               </div>
               <div class="m-2 tooltip">
-                <span class="tooltip-text">Contact Me</span>
+                <span class="tooltip-text">Contact Business Email</span>
+                <a href="mailto:alec@ap-codes.com">
+                  <i
+                    class="bi bi-suitcase-lg icon"
+                    style="font-size: 2rem; color: cornflowerblue;"
+                    title="alec@ap-codes.com"
+                  ></i>
+                </a>
+              </div>
+              <div class="m-2 tooltip">
+                <span class="tooltip-text">Contact Personal Email</span>
                 <a href="mailto:alecpierce19@gmail.com">
                   <i
                     class="bi bi-envelope-at icon"
                     style="font-size: 2rem; color: cornflowerblue;"
-                    title="email"
+                    title="alecpierce19@gmail.com"
                   ></i>
                 </a>
               </div>
