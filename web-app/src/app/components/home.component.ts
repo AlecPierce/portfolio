@@ -37,7 +37,7 @@ import { NavRoute } from '../classes/navRoute';
                 Experience creating tools for existing applications
               </p>
             </div>
-            <div class="size-fit grid grid-cols-5 pl-4">
+            <div class="size-fit grid grid-cols-6 pl-4">
               <div class="m-2 tooltip">
                 <span class="tooltip-text">LinkedIn</span>
                 <a
